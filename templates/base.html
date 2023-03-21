@@ -17,6 +17,12 @@
     <title>{% block title %} {% endblock%}</title>
   </head>
   <body>
-    {% block body %} {% endblock %}
+    <nav>
+      <a href="/">Home</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    </nav>
+    <main>{% block main %} {% endblock %}</main>
+    <footer class="mb-5 small text-center text-muted">Footer</footer>
   </body>
 </html>
