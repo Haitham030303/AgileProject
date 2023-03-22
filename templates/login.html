@@ -1,4 +1,31 @@
 {% extends "base.html" %} {% block title %} Login {% endblock %} {% block main
 %}
-<h1>Login Page</h1>
+<form action="/login" method="post">
+  <h1>Please sign in</h1>
+  <div class="mb-3">
+    <input
+      autocomplete="off"
+      autofocus
+      class="form-control mx-auto w-auto"
+      type="email"
+      minlength="5"
+      maxlength="255"
+      name="email"
+      placeholder="Email address"
+    />
+  </div>
+  <div class="mb-3">
+    <input
+      class="form-control mx-auto w-auto"
+      type="password"
+      maxlength="255"
+      name="password"
+      placeholder="Password"
+    />
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary form-control" type="submit">Sign in</button>
+  </div>
+  <div class="copyright">Copyright &copy; 2023</div>
+</form>
 {% endblock %}
