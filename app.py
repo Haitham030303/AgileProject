@@ -12,6 +12,7 @@ db = SQLAlchemy(app)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -20,9 +21,11 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -32,11 +35,18 @@ def login():
         return "<h1>Logged In!</h1>"
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template('login.html')   
+        return render_template('login.html')
+
 
 @app.route('/register')
 def register():
     return render_template('register.html')
+
+
+@app.route('/add-project')
+def add_project():
+    return render_template('add-project.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
