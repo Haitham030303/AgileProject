@@ -1,4 +1,62 @@
-{% extends "base.html" %} {% block title %} Register {% endblock %} {% block
-main %}
-<h1>Sign Up Page</h1>
+{% extends "base.html" %} {% block title %} Sign Up {% endblock %} {% block main
+%}
+<form action="/register" class="myform" method="post">
+  <h1>Create A New Account</h1>
+  <div class="mb-3 form-group">
+    <input
+      autocomplete="off"
+      autofocus
+      class="form-control mx-auto w-auto"
+      type="text"
+      minlength="1"
+      maxlength="255"
+      name="firstname"
+      placeholder="First Name"
+    />
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      autocomplete="off"
+      class="form-control mx-auto w-auto"
+      type="text"
+      minlength="1"
+      maxlength="255"
+      name="lastname"
+      placeholder="Last Name"
+    />
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      autocomplete="off"
+      class="form-control mx-auto w-auto"
+      type="email"
+      minlength="5"
+      maxlength="255"
+      name="email"
+      placeholder="Email address"
+    />
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      class="form-control mx-auto w-auto"
+      type="password"
+      maxlength="255"
+      name="password"
+      placeholder="Password"
+    />
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      class="form-control mx-auto w-auto"
+      type="password"
+      maxlength="255"
+      name="confirmpassword"
+      placeholder="Re-type Password"
+    />
+  </div>
+  <div class="mb-3 form-group">
+    <button class="btn" type="submit">Register</button>
+  </div>
+  <div class="copyright">Copyright &copy; 2023</div>
+</form>
 {% endblock %}

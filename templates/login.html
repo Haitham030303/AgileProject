@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% block title %} Login {% endblock %} {% block main
 %}
-<form action="/login" method="post">
+<form action="/login" class="myform" method="post">
   <h1>Please sign in</h1>
-  <div class="mb-3">
+  <div class="mb-3 form-group">
     <input
       autocomplete="off"
       autofocus
@@ -14,7 +14,7 @@
       placeholder="Email address"
     />
   </div>
-  <div class="mb-3">
+  <div class="mb-3 form-group">
     <input
       class="form-control mx-auto w-auto"
       type="password"
@@ -23,8 +23,8 @@
       placeholder="Password"
     />
   </div>
-  <div class="mb-3">
-    <button class="btn btn-primary form-control" type="submit">Sign in</button>
+  <div class="mb-3 form-group">
+    <button class="btn" type="submit">Sign in</button>
   </div>
   <div class="copyright">Copyright &copy; 2023</div>
 </form>
