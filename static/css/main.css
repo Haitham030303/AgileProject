@@ -84,3 +84,83 @@ button {
   outline: none;
   width: 100%;
 }
+
+.btn.btn-outline:hover,
+.btn.btn-outline:focus {
+  background: hsl(200, 50%, 90%);
+}
+
+.btn + .btn {
+  margin-left: 0.25rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: flex-start;
+}
+
+.P-owner {
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+}
+.Project-colablators {
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.card {
+  background-color: white;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.title-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  align-items: flex-start;
+}
+
+.P-Title {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+.status {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.Discription {
+  font-size: 0.9rem;
+  overflow: visible;
+  overflow-wrap: anywhere;
+}
+
+.card-footer {
+  margin-top: 1rem;
+}
+
+.card-footer .btn {
+  --color: hsl(200, 50%, 50%);
+  background: var(--color);
+  color: white;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.card-footer .btn:hover,
+.card-footer .btn:focus {
+  background: hsl(200, 50%, 60%);
+}
+
+.btn.btn-outline {
+  background: none;
+  border: 1px solid var(--color);
+  color: var(--color);
+}
