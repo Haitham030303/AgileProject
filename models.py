@@ -1,4 +1,6 @@
-import db
+from app import db
+from sqlalchemy import func
+
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -22,9 +24,9 @@ class Task(db.Model):
     task_description = db.Column(db.String(1000))
 
 class Collaborator(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
 
 class Leader(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
