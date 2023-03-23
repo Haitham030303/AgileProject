@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block title %} Home {% endblock %} {% block main %}
+<form>
+  <label for="title"> Research Title</label><br />
+  <input type="text" /><br />
+  <label for="project_leader"> Leader</label><br />
+  <input type="text" /><br />
+  <label for="project_description"> Description</label><br />
+  <input type="text" />
+  <button type="submit" form="form1" value="Submit">Submit</button>
+</form>
+
+{% endblock %}
