@@ -66,17 +66,18 @@ h1 {
 }
 
 
-input[type="project_description"]
+input[type="project description"]
 {
     border: 1px solid #ced4da;
-    margin-bottom: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 5rem;
     padding: 1.5rem;
     padding-right: 0;
     border-radius: 5px;
     transition: border-color 0.5s, box-shadow 0.5s;
 }
 
-input[type="project_description"]
+input[type="project description"]
 { 
     outline: none;
     width: 100%;
@@ -87,7 +88,7 @@ input[type="project_description"]
 input[type="text"],
 input[type="email"],
 input[type="title"],
-input[type="project_leader"],
+input[type="project leader"],
 input[type="password"] {
   border: 1px solid #ced4da;
   margin-bottom: 1rem;
@@ -99,8 +100,8 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="title"]:focus,
-input[type="project_leader"]:focus,
-input[type="project_description"]:focus,
+input[type="project leader"]:focus,
+input[type="project description"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   border-color: #86b7fe;
@@ -109,7 +110,7 @@ input[type="password"]:focus {
 
 input[type="text"],
 input[type="title"],
-input[type="project_leader"],
+input[type="project leader"],
 input[type="email"],
 input[type="password"],
 button {
