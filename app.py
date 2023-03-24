@@ -44,9 +44,20 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/add_project')
+@app.route('/add_project', methods=["POST", "GET"])
 def add_project():
-    return render_template('add_project.html')
+
+    if request.method == 'POST':
+        title = request.form['title']
+        project_leader = request.form['project leader']
+        project_description = request.form['project description']
+        with open('projects.txt', 'a') as f:
+            f.write(f'{title}, {project_leader}\n{project_description}\n')
+        return "<h1>Project Added!</h1>"
+    
+    else:
+        return render_template('add_project.html')
+
 
 def create_databse(app):
     if not path.exists('./' + DB_NAME):
