@@ -47,6 +47,7 @@ def register():
 @app.route('/add_project', methods=["POST", "GET"])
 def add_project():
 
+    #get project info and store in a txt file for testing
     if request.method == 'POST':
         title = request.form['title']
         project_leader = request.form['project leader']
