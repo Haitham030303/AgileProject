@@ -85,8 +85,23 @@ button {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
+.form-group a {
+  color: black;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.form-group a:hover {
+  color: #0e52b7;
+}
+/*  */
+
 .btn.btn-outline:hover,
-.btn.btn-outline:focus {
+.btn.btn-outline:focus {,,,
   background: hsl(200, 50%, 90%);
 }
 
