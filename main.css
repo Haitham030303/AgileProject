@@ -61,7 +61,8 @@ h1 {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="title"] {
   border: 1px solid #ced4da;
   margin-bottom: 1rem;
   padding: 1.5rem;
@@ -72,6 +73,7 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="title"]:focus,
 input[type="password"]:focus {
   border-color: #86b7fe;
   box-shadow: 0 0 0 5px #b9d3fa;
@@ -79,6 +81,7 @@ input[type="password"]:focus {
 
 input[type="text"],
 input[type="email"],
+input[type="title"],
 input[type="password"],
 button {
   outline: none;

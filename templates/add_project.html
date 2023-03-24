@@ -1,12 +1,49 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock %} {% block main %}
-<form action="/add_project" method="post">
-  <label for="title"> Research Title</label><br />
-  <input type="text" /><br />
-  <label for="project_leader"> Leader</label><br />
-  <input type="text" /><br />
-  <label for="project_description"> Description</label><br />
-  <input type="text" />
-  <button type="submit" form="form1" value="Submit">Submit</button>
+
+<form action="/add_project" method="post" class="myform">
+  <h1>Create your Project</h1>
+
+  <div class="mb-3 form-group">
+    <input
+    autofocus
+    autocomplete="off"
+    class="form-control mx-auto w-auto"
+    type="title"
+    minlength="5"
+    maxlength="255"
+    name="title"
+    placeholder="project title"
+    />
+  </div>
+
+  <div class="mb-3 form-group">
+    <input
+    autocomplete="off"
+    class="form-control mx-auto w-auto"
+    type="project_leader"
+    minlength="5"
+    maxlength="255"
+    name="project_leader"
+    placeholder="project leader"
+    />
+  </div>
+
+  <div class="mb-3 project_description">
+    <input
+    autocomplete="on"
+    class="form-control mx-auto w-auto"
+    type="project_description"
+    minlength="5"
+    maxlength="500"
+    name="project description"
+    placeholder="project description"
+    />
+  </div>
+
+  <div class="mb-3 form-group">
+    <button class="btn" type="submit">Submit</button>
+  </div>
+
 </form>
 
 {% endblock %}
