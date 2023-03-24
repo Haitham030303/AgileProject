@@ -44,12 +44,14 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/add-project')
+@app.route('/add_project')
 def add_project():
-    return render_template('add-project.html')
+    return render_template('add_project.html')
 
 def create_databse(app):
     if not path.exists('./' + DB_NAME):
         db.create_all(app=app)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
