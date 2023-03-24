@@ -54,6 +54,7 @@ def add_project():
         with open('projects.txt', 'a') as f:
             f.write(f'{title}, {project_leader}\n{project_description}\n')
         return "<h1>Project Added!</h1>"
+
     
     else:
         return render_template('add_project.html')
