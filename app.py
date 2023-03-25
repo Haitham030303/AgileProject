@@ -1,9 +1,14 @@
 from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from views import views
+from auth import auth
+import models
 
 app = Flask(__name__)
 app.register_blueprint(views, url_prefix="/")
+app.register_blueprint(auth, url_prefix="/")
+
+
 DB_NAME = "database.db"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
@@ -13,8 +18,7 @@ db = SQLAlchemy(app)
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-  
-import models
+
 
 @app.after_request
 def after_request(response):
@@ -23,6 +27,7 @@ def after_request(response):
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
+
 
 def create_databse(app):
     if not path.exists('./' + DB_NAME):

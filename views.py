@@ -7,26 +7,10 @@ def index():
     return render_template('index.html')
 
 
-@views.route('/login', methods=["GET", "POST"])
-def login():
-    # User reached route via POST (as by submitting a form via POST)
-    if request.method == "POST":
-        # TODO: Do validation stuff here
-        return "<h1>Logged In!</h1>"
-    # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template('login.html')
-
-
-@views.route('/register')
-def register():
-    return render_template('register.html')
-
-
 @views.route('/add_project', methods=["POST", "GET"])
 def add_project():
 
-    #get project info and store in a txt file for testing
+    # get project info and store in a txt file for testing
     if request.method == 'POST':
         title = request.form['title']
         project_leader = request.form['project leader']
