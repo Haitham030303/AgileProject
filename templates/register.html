@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% block title %} Login {% endblock %} 
-{% block main %}
+{% extends "base.html" %} {% block title %} Login {% endblock %} {% block main
+%}
 <form action="/register" class="myform" method="post">
   <h1>Create A New Account</h1>
   <div class="mb-3 form-group">
@@ -10,7 +10,7 @@
       type="text"
       minlength="1"
       maxlength="255"
-      name="firstname"
+      name="first_name"
       placeholder="First Name"
     />
   </div>
@@ -21,7 +21,7 @@
       type="text"
       minlength="1"
       maxlength="255"
-      name="lastname"
+      name="last_name"
       placeholder="Last Name"
     />
   </div>
@@ -41,7 +41,7 @@
       class="form-control mx-auto w-auto"
       type="password"
       maxlength="255"
-      name="password"
+      name="password1"
       placeholder="Password"
     />
   </div>
@@ -50,7 +50,7 @@
       class="form-control mx-auto w-auto"
       type="password"
       maxlength="255"
-      name="confirmpassword"
+      name="password2"
       placeholder="Re-type Password"
     />
   </div>
