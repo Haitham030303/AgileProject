@@ -2,6 +2,7 @@
 *::after,
 *::before {
   box-sizing: border-box;
+
 }
 
 html {
@@ -40,9 +41,9 @@ h1 {
 }
 
 .project_description {
-    text-align: center;
-    width: 40rem;
-  }
+  text-align: center;
+  width: 40rem;
+}
 
 
 .btn {
@@ -60,28 +61,27 @@ h1 {
 .btn:hover {
   background-color: #0e52b7;
 }
+
 .copyright {
   color: #6c757d;
   text-align: center;
 }
 
 
-input[type="project description"]
-{
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
-    margin-bottom: 5rem;
-    padding: 1.5rem;
-    padding-right: 0;
-    border-radius: 5px;
-    transition: border-color 0.5s, box-shadow 0.5s;
+input[type="project description"] {
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  margin-bottom: 5rem;
+  padding: 1.5rem;
+  padding-right: 0;
+  border-radius: 5px;
+  transition: border-color 0.5s, box-shadow 0.5s;
 }
 
-input[type="project description"]
-{ 
-    outline: none;
-    width: 100%;
-    height: 100%;
+input[type="project description"] {
+  outline: none;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -131,14 +131,18 @@ a {
 .form-group a:hover {
   color: #0e52b7;
 }
+
 /*  */
 
 .btn.btn-outline:hover,
-.btn.btn-outline:focus {,,,
+.btn.btn-outline:focus {
+  ,
+  ,
+  ,
   background: hsl(200, 50%, 90%);
 }
 
-.btn + .btn {
+.btn+.btn {
   margin-left: 0.25rem;
 }
 
@@ -152,6 +156,7 @@ a {
   margin-bottom: 0.5rem;
   font-size: 0.7rem;
 }
+
 .Project-colablators {
   margin-bottom: 0.5rem;
   font-size: 0.7rem;
@@ -176,6 +181,7 @@ a {
   font-size: 1.5rem;
   margin-bottom: 0.2rem;
 }
+
 .status {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -211,4 +217,68 @@ a {
   background: none;
   border: 1px solid var(--color);
   color: var(--color);
+}
+
+/*Nav bar styling starts here*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav a.logo {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .menu-toggle:hover+ul,
+  nav ul:hover {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .menu-toggle:hover+ul {
+    margin-top: 0;
+  }
+
+  nav li {
+    margin: 10px 0;
+  }
 }
