@@ -136,9 +136,6 @@ a {
 
 .btn.btn-outline:hover,
 .btn.btn-outline:focus {
-  ,
-  ,
-  ,
   background: hsl(200, 50%, 90%);
 }
 
@@ -248,4 +245,37 @@ nav ul {
 
 nav li {
   margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .menu-toggle:hover+ul,
+  nav ul:hover {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .menu-toggle:hover+ul {
+    margin-top: 0;
+  }
+
+  nav li {
+    margin: 10px 0;
+  }
 }
