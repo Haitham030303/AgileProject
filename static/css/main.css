@@ -212,3 +212,53 @@ a {
   border: 1px solid var(--color);
   color: var(--color);
 }
+
+.alert {
+  padding: 1rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-dismissable {
+  position: relative;
+  padding-right: 3rem;
+}
+
+.alert-dismissable .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  color: inherit;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.show {
+  opacity: 1;
+}
+
+.close {
+  width: auto;
+  background-color: inherit;
+  border: none;
+  height: auto;
+  font-size: 2rem;
+  overflow: hidden;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
