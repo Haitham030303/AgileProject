@@ -201,7 +201,7 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.Discription {
+.Description {
   font-size: 0.9rem;
   overflow: visible;
   overflow-wrap: anywhere;
@@ -211,7 +211,7 @@ a {
   margin-top: 1rem;
 }
 
-.card-footer .btn {
+.homebtn {
   --color: hsl(200, 50%, 50%);
   background: var(--color);
   color: white;
@@ -220,14 +220,15 @@ a {
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
   cursor: pointer;
+  width: auto;
 }
 
-.card-footer .btn:hover,
-.card-footer .btn:focus {
+.homebtn:hover,
+.homebtn:focus {
   background: hsl(200, 50%, 60%);
 }
 
-.btn.btn-outline {
+.homebtn.btn-outline {
   background: none;
   border: 1px solid var(--color);
   color: var(--color);
