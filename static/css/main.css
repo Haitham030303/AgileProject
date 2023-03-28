@@ -320,3 +320,58 @@ nav li {
     margin: 10px 0;
   }
 }
+/**/
+.title_Detail{
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.status_Detail{
+  text-align: end;
+  font-weight: bold;
+  color: green;
+  font-size: 1.5rem;
+  margin-right: 7rem;
+}
+.leaders_Detail{
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  margin-bottom: .7em;
+
+}
+.teams_Detail{
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  margin-bottom: .7em;
+
+}
+.just_Details{
+  margin-left: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: .4em;
+}
+.description_Detail{
+  margin-left: 2rem;
+  margin-right: 9rem;
+  font-size: 1.5rem;
+  margin-bottom: .7em;
+}
+.just_History_Detail{
+  margin-left: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: .4em;
+}
+.history_Detail li{
+  list-style: none;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: .9rem;
+}
+.started_date_Detail{
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: .4em;
+}
