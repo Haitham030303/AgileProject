@@ -123,29 +123,19 @@ a {
 }
 
 /*  */
-
-
- 
-.card-grid{
-  display: grid;
-  font-family: 'Poppins', sans-serif;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  align-items: flex-start;
-}
-
 .P-owner{
   margin-bottom: .5rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
-.Project-colablators{
+.Project-collaborators{
   margin-bottom: .5rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .card{
   background-color: white;
   padding: 1rem;
-  margin: .9rem 3rem;
+  margin: .9rem 3.8rem;
   border: none;
   border-radius: .25rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
@@ -154,25 +144,26 @@ a {
 
 
 .P-Title{
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: .2rem;
   text-align: center;  
 }
 .status{
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   margin-bottom: .5rem;
   text-align: end;
   color: green;
 }
 
-.Discription{
-  font-size: 1.3rem;
+.Description{
+  font-size: 1.8rem;
  max-height: calc(2 * 1em * 1.4);
  line-height: 1.4;
  overflow: hidden;
  position: relative;
+ margin-bottom: 1.2rem;
 }
-.Discription::before{
+.Description::before{
   content: "";
   position: absolute;
   height: calc(1em * 1.4);
@@ -191,10 +182,11 @@ a {
   background: var(--color);
   color: white;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   padding: .5em .75em;
   border-radius: .25em;
   cursor: pointer;
+  width: auto;
 }
 
 .homebtn:hover, .homebtn:focus{
