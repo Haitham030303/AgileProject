@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash
 import re
 
 auth = Blueprint(__name__, "auth")
-special_char_pattern = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+special_chars = re.compile('[^a-zA-Z0-9 ]')
 
 
 @auth.route('/login', methods=["GET", "POST"])
@@ -39,7 +39,7 @@ def register():
             flash('Password must contain at least one uppercase character!', category='error')
         elif password1.isupper():  # No lowercase letter
             flash('Password must contain at least one lowercase character', category='error')
-        elif not special_char_pattern.search(password1):  # No special character
+        elif not special_chars.search(password1):
             flash('Password must contain at least one special character!', category='error')
         elif not re.search('\d', password1):
             flash('Password must contain at least one number!', category='error')

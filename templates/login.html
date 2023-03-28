@@ -1,5 +1,4 @@
-{% extends "base.html" %} {% block title %} Login {% endblock %} {% block main
-%}
+{% extends "base.html" %} {% block title %} Login {% endblock %} {% block main%}
 <form action="/login" class="myform" method="post">
   <h1>Please sign in</h1>
   <div class="mb-3 form-group">
@@ -30,3 +29,4 @@
   <div class="copyright">Copyright &copy; 2023</div>
 </form>
 {% endblock %}
+{% set active = 'login' %}
