@@ -124,63 +124,55 @@ a {
 
 /*  */
 
-.btn.btn-outline:hover,
-.btn.btn-outline:focus {
-  background: hsl(200, 50%, 90%);
-}
 
-.btn + .btn {
-  margin-left: 0.25rem;
-}
-
-.card-grid {
+ 
+.card-grid{
   display: grid;
-  font-family: "Poppins", sans-serif;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  font-family: 'Poppins', sans-serif;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
   align-items: flex-start;
 }
 
-.P-owner {
-  margin-bottom: 0.5rem;
+.P-owner{
+  margin-bottom: .5rem;
   font-size: 1.2rem;
 }
-.Project-collaborators {
-  margin-bottom: 0.5rem;
+.Project-colablators{
+  margin-bottom: .5rem;
   font-size: 1.2rem;
 }
 
-.card {
+.card{
   background-color: white;
   padding: 1rem;
-  margin: 0.5rem;
+  margin: .9rem 3rem;
   border: none;
-  border-radius: 0.25rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
 }
 
-.title-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  align-items: flex-start;
-}
 
-.P-Title {
-  font-size: 1.8rem;
-  margin-bottom: 0.2rem;
-}
-.status {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
 
-.Description {
+.P-Title{
+  font-size: 2rem;
+  margin-bottom: .2rem;
+  text-align: center;  
+}
+.status{
   font-size: 1.3rem;
-  max-height: calc(2 * 1em * 1.4);
-  line-height: 1.4;
-  overflow: hidden;
-  position: relative;
+  margin-bottom: .5rem;
+  text-align: end;
+  color: green;
 }
-.Description::before {
+
+.Discription{
+  font-size: 1.3rem;
+ max-height: calc(2 * 1em * 1.4);
+ line-height: 1.4;
+ overflow: hidden;
+ position: relative;
+}
+.Discription::before{
   content: "";
   position: absolute;
   height: calc(1em * 1.4);
@@ -190,43 +182,37 @@ a {
   background: linear-gradient(to bottom, transparent, white);
 }
 
-.card-footer {
+.card-footer{
   margin-top: 1rem;
 }
 
-.card-footer button {
-  width: auto;
-}
-
-.homebtn {
+.homebtn{
   --color: hsl(200, 50%, 50%);
   background: var(--color);
   color: white;
   border: none;
-  font-size: 1.3rem;
-  padding: 0.5em 0.75em;
-  border-radius: 0.25em;
+  font-size: 1.5rem;
+  padding: .5em .75em;
+  border-radius: .25em;
   cursor: pointer;
 }
 
-.homebtn:hover,
-.homebtn:focus {
+.homebtn:hover, .homebtn:focus{
   background: hsl(200, 50%, 60%);
 }
 
-.homebtn.btn-outline {
+.homebtn.btn-outline{
   background: none;
   border: 1px solid var(--color);
   color: var(--color);
 }
 
-.homebtn.btn-outline:hover,
-.homebtn.btn-outline:focus {
+.homebtn.btn-outline:hover, .homebtn.btn-outline:focus{
   background: hsl(200, 50%, 90%);
 }
 
-.homebtn + .homebtn {
-  margin-left: 0.25rem;
+.homebtn + .homebtn{
+  margin-left: .25rem;
 }
 
 /*  */
