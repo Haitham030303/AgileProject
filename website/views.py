@@ -19,15 +19,11 @@ def add_project():
         project_leader = request.form['project_leader']
         project_description = request.form['project_description']
         # TODO: add the project to database 
-        new_project = Project(title=title, leaders=project_leader, description=project_description )
-        db.session.add(new_project)
-        db.session.commit()
+        # new_project = Project(title=title, leaders=project_leader, description=project_description )
+        # db.session.add(new_project)
+        # db.session.commit()
         with open('projects.txt', 'a') as f:
             f.write(f'{title}, {project_leader}\n{project_description}\n')
         return "<h1>Project Added!</h1>"
     else:
         return render_template('add_project.html')
-
-@views.route('/add')
-def add():
-    return render_template('add-project.html')

@@ -23,11 +23,17 @@
       type="text"
       minlength="5"
       maxlength="255"
-      name="leader"
+      name="project_leader"
       placeholder="project leader"
     />
   </div>
+  <!-- {%% raw %%}
+  <button id="add-btn">Add Leader</button>
+  <div id="input-box" style="display: none">
+    <input type="text" name="leader" placeholder="project leader" />
+  </div>
 
+  {% endraw %} -->
   <div class="mb-3 project_description">
     <input
       autocomplete="off"
@@ -35,7 +41,7 @@
       type="text"
       minlength="5"
       maxlength="500"
-      name="description"
+      name="project_description"
       placeholder="project description"
     />
   </div>
@@ -45,5 +51,4 @@
   </div>
 </form>
 
-{% endblock %}
-{% set active = 'add_project' %}
+{% endblock %} {% set active = 'add_project' %}
