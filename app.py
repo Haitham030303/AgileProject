@@ -4,20 +4,20 @@ from views import views
 from auth import auth
 from os import path
 
-app = Flask(__name__)
-app.register_blueprint(views, url_prefix="/")
-app.register_blueprint(auth, url_prefix="/")
-
-
 DB_NAME = "database.db"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-app.config['SECRET_KEY'] = "dsaljf;ldsakjf;lkdsjf,cmlkjlkwqjfoijlsad;"
+def create_app():
+    app = Flask(__name__)
+    app.register_blueprint(views, url_prefix="/")
+    app.register_blueprint(auth, url_prefix="/")
 
-db = SQLAlchemy(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SECRET_KEY'] = "dsaljf;ldsakjf;lkdsjf,cmlkjlkwqjfoijlsad;"
 
-# Ensure templates are auto-reloaded
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+    db = SQLAlchemy(app)
+
+    # Ensure templates are auto-reloaded
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
 @app.after_request
@@ -34,6 +34,7 @@ def create_database(app):
         with app.app_context():
             db.create_all()
 
+app = create_app()
 
 if __name__ == "__main__":
     create_database(app)
