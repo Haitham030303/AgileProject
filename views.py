@@ -27,7 +27,3 @@ def add_project():
         return "<h1>Project Added!</h1>"
     else:
         return render_template('add_project.html')
-
-@views.route('/add')
-def add():
-    return render_template('add-project.html')
