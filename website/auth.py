@@ -1,16 +1,19 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from models import User
+from .models import User
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
+from . import db 
 
-auth = Blueprint(__name__, "auth")
+auth = Blueprint("auth", __name__)
 special_chars = re.compile('[^a-zA-Z0-9 ]')
 
 
 @auth.route('/login', methods=["GET", "POST"])
 def login():
     # User reached route via POST (as by submitting a form via POST)
-    if request.method == "POST":       
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
         return "<h1>Logged In!</h1>"
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -49,7 +52,7 @@ def register():
             flash('Passwords don\'t match!', category='error')
         else:
             new_user = User(email=email, first_name=first_name, 
-                            last_name=last_name, password=generate_password_hash(password1), method='sha256')
+                            last_name=last_name, hash=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             flash('Account created!', category='success')
