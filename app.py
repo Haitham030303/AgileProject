@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from views import views
 from auth import auth
-import models
+from os import path
 
 app = Flask(__name__)
 app.register_blueprint(views, url_prefix="/")
@@ -31,8 +31,10 @@ def after_request(response):
 
 def create_database(app):
     if not path.exists('./' + DB_NAME):
-        db.create_all(app=app)
+        with app.app_context():
+            db.create_all()
 
 
 if __name__ == "__main__":
+    create_database(app)
     app.run(debug=True)
