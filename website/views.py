@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template
 
-views = Blueprint(__name__, "views")
+views = Blueprint("views_bp", __name__)
 
 @views.route('/')
 def index():

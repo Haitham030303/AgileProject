@@ -1,4 +1,4 @@
-from __init__ import db
+from . import db
 from sqlalchemy import func
 from flask_login import UserMixin
 
@@ -8,8 +8,7 @@ class Project(db.Model):
     start_date = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
     description = db.Column(db.String(5000), unique=True, nullable=False)
     status = db.Column(db.String(500), nullable=False)
-    leaders = db.relationship('Leader')
-    collaborators = db.relationship('Collaborator')
+
     
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +16,6 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(500), nullable=False)
     email = db.Column(db.String(500), unique=True)
     hash = db.Column(db.String(500))
-    projects = db.relationship('Project')
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
