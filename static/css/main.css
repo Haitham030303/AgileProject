@@ -2,7 +2,6 @@
 *::after,
 *::before {
   box-sizing: border-box;
-
 }
 
 html {
@@ -45,7 +44,6 @@ h1 {
   width: 40rem;
 }
 
-
 .btn {
   color: white;
   background-color: #0d6efd;
@@ -67,8 +65,7 @@ h1 {
   text-align: center;
 }
 
-
-input[type="project description"] {
+/* input[type="project description"] {
   border: 1px solid #ced4da;
   box-sizing: border-box;
   margin-bottom: 5rem;
@@ -78,17 +75,15 @@ input[type="project description"] {
   transition: border-color 0.5s, box-shadow 0.5s;
 }
 
-input[type="project description"] {
-  outline: none;
-  width: 100%;
-  height: 100%;
-}
-
+input[type="project description"]
+{ 
+    outline: none;
+    width: 100%;
+    height: 100%;
+} */
 
 input[type="text"],
 input[type="email"],
-input[type="title"],
-input[type="project leader"],
 input[type="password"] {
   border: 1px solid #ced4da;
   margin-bottom: 1rem;
@@ -99,9 +94,6 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="title"]:focus,
-input[type="project leader"]:focus,
-input[type="project description"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   border-color: #86b7fe;
@@ -109,8 +101,6 @@ input[type="password"]:focus {
 }
 
 input[type="text"],
-input[type="title"],
-input[type="project leader"],
 input[type="email"],
 input[type="password"],
 button {
@@ -133,87 +123,139 @@ a {
 }
 
 /*  */
-
-.btn.btn-outline:hover,
-.btn.btn-outline:focus {
-  background: hsl(200, 50%, 90%);
+.P-owner{
+  margin-bottom: .5rem;
+  font-size: 1.6rem;
+}
+.Project-collaborators{
+  margin-bottom: .5rem;
+  font-size: 1.6rem;
 }
 
-.btn+.btn {
-  margin-left: 0.25rem;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  align-items: flex-start;
-}
-
-.P-owner {
-  margin-bottom: 0.5rem;
-  font-size: 0.7rem;
-}
-
-.Project-colablators {
-  margin-bottom: 0.5rem;
-  font-size: 0.7rem;
-}
-
-.card {
+.card{
   background-color: white;
   padding: 1rem;
-  margin: 0.5rem;
+  margin: 2rem 3.8rem;
   border: none;
-  border-radius: 0.25rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
 }
 
-.title-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  align-items: flex-start;
+
+
+.P-Title{
+  font-size: 3rem;
+  margin-bottom: .2rem;
+  text-align: center;  
+}
+.status{
+  font-size: 1.8rem;
+  margin-bottom: .5rem;
+  text-align: end;
+  color: green;
 }
 
-.P-Title {
-  font-size: 1.5rem;
-  margin-bottom: 0.2rem;
+.Description{
+  font-size: 1.8rem;
+ max-height: calc(2 * 1em * 1.4);
+ line-height: 1.4;
+ overflow: hidden;
+ position: relative;
+ margin-bottom: 1.2rem;
+}
+.Description::before{
+  content: "";
+  position: absolute;
+  height: calc(1em * 1.4);
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, white);
 }
 
-.status {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.Discription {
-  font-size: 0.9rem;
-  overflow: visible;
-  overflow-wrap: anywhere;
-}
-
-.card-footer {
+.card-footer{
   margin-top: 1rem;
 }
 
-.card-footer .btn {
+.homebtn{
   --color: hsl(200, 50%, 50%);
   background: var(--color);
   color: white;
   border: none;
-  font-size: 1rem;
-  padding: 0.5em 0.75em;
-  border-radius: 0.25em;
+  font-size: 1.8rem;
+  padding: .5em .75em;
+  border-radius: .25em;
   cursor: pointer;
+  width: auto;
 }
 
-.card-footer .btn:hover,
-.card-footer .btn:focus {
+.homebtn:hover, .homebtn:focus{
   background: hsl(200, 50%, 60%);
 }
 
-.btn.btn-outline {
+.homebtn.btn-outline{
   background: none;
   border: 1px solid var(--color);
   color: var(--color);
+}
+
+.homebtn.btn-outline:hover, .homebtn.btn-outline:focus{
+  background: hsl(200, 50%, 90%);
+}
+
+.homebtn + .homebtn{
+  margin-left: .25rem;
+}
+
+/*  */
+
+.alert {
+  padding: 1rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-dismissable {
+  position: relative;
+  padding-right: 3rem;
+}
+
+.alert-dismissable .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  color: inherit;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.show {
+  opacity: 1;
+}
+
+.close {
+  width: auto;
+  background-color: inherit;
+  border: none;
+  height: auto;
+  font-size: 2rem;
+  overflow: hidden;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
 
 /*Nav bar styling starts here*/
@@ -228,7 +270,6 @@ nav {
   background-color: #333;
   color: #fff;
   width: 100%;
-
 }
 
 nav a {
@@ -263,7 +304,7 @@ nav li {
     font-size: 24px;
   }
 
-  .menu-toggle:hover+ul,
+  .menu-toggle:hover + ul,
   nav ul:hover {
     display: flex;
     flex-direction: column;
@@ -275,11 +316,66 @@ nav li {
     padding: 10px 0;
   }
 
-  .menu-toggle:hover+ul {
+  .menu-toggle:hover + ul {
     margin-top: 0;
   }
 
   nav li {
     margin: 10px 0;
   }
+}
+/**/
+.title_Detail{
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.status_Detail{
+  text-align: end;
+  font-weight: bold;
+  color: green;
+  font-size: 1.5rem;
+  margin-right: 7rem;
+}
+.leaders_Detail{
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  margin-bottom: .7em;
+
+}
+.teams_Detail{
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  margin-bottom: .7em;
+
+}
+.just_Details{
+  margin-left: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: .4em;
+}
+.description_Detail{
+  margin-left: 2rem;
+  margin-right: 9rem;
+  font-size: 1.5rem;
+  margin-bottom: .7em;
+}
+.just_History_Detail{
+  margin-left: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: .4em;
+}
+.history_Detail li{
+  list-style: none;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: .9rem;
+}
+.started_date_Detail{
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: .4em;
 }

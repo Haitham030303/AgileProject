@@ -12,12 +12,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css')}}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css')}}"
     />
     <title>{% block title %} {% endblock%}</title>
   </head>
   <body>
-    {% block nav %}
     <nav>
       <a class="logo" href="#">Logo</a>
       <ul>
@@ -25,15 +28,30 @@
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
         <li><a href="/add_project">Add a project</a></li>
+        <li><a href="/detail">detail</a></li>
       </ul>
-      <div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-  </nav>
-    {% endblock nav%}
-    
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {%if category == 'error' %}
+            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {%else%}
+            <div class="alert alert-success alert-dismissable fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {%endif%}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     <main>{% block main %} {% endblock %}</main>
     <footer class="mb-5 small text-center text-muted"></footer>
     <script
@@ -41,5 +59,7 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/JavaScript/script.js"> </script>
   </body>
 </html>
