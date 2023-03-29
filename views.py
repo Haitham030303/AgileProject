@@ -6,6 +6,10 @@ views = Blueprint(__name__, "views")
 def index():
     return render_template('index.html')
 
+@views.route('/detail')
+def detail():
+    return render_template('detail.html')
+
 
 @views.route('/add_project', methods=["POST", "GET"])
 def add_project():
