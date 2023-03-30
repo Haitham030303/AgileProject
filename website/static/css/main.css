@@ -24,7 +24,7 @@ h1 {
   font-size: 3.2rem;
 }
 
-.myform {
+/* .myform {
   width: 35rem;
   margin: 0 auto;
   display: flex;
@@ -32,7 +32,7 @@ h1 {
   align-items: center;
   flex-direction: column;
   height: 90vh;
-}
+} */
 
 .form-group {
   text-align: center;
@@ -123,47 +123,45 @@ a {
 }
 
 /*  */
-.P-owner{
-  margin-bottom: .5rem;
+.P-owner {
+  margin-bottom: 0.5rem;
   font-size: 1.6rem;
 }
-.Project-collaborators{
-  margin-bottom: .5rem;
+.Project-collaborators {
+  margin-bottom: 0.5rem;
   font-size: 1.6rem;
 }
 
-.card{
+.card {
   background-color: white;
   padding: 1rem;
   margin: 2rem 3.8rem;
   border: none;
-  border-radius: .25rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-
-
-.P-Title{
+.P-Title {
   font-size: 3rem;
-  margin-bottom: .2rem;
-  text-align: center;  
+  margin-bottom: 0.2rem;
+  text-align: center;
 }
-.status{
+.status {
   font-size: 1.8rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   text-align: end;
   color: green;
 }
 
-.Description{
+.Description {
   font-size: 1.8rem;
- max-height: calc(2 * 1em * 1.4);
- line-height: 1.4;
- overflow: hidden;
- position: relative;
- margin-bottom: 1.2rem;
+  max-height: calc(2 * 1em * 1.4);
+  line-height: 1.4;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1.2rem;
 }
-.Description::before{
+.Description::before {
   content: "";
   position: absolute;
   height: calc(1em * 1.4);
@@ -173,38 +171,40 @@ a {
   background: linear-gradient(to bottom, transparent, white);
 }
 
-.card-footer{
+.card-footer {
   margin-top: 1rem;
 }
 
-.homebtn{
+.homebtn {
   --color: hsl(200, 50%, 50%);
   background: var(--color);
   color: white;
   border: none;
   font-size: 1.8rem;
-  padding: .5em .75em;
-  border-radius: .25em;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
   cursor: pointer;
   width: auto;
 }
 
-.homebtn:hover, .homebtn:focus{
+.homebtn:hover,
+.homebtn:focus {
   background: hsl(200, 50%, 60%);
 }
 
-.homebtn.btn-outline{
+.homebtn.btn-outline {
   background: none;
   border: 1px solid var(--color);
   color: var(--color);
 }
 
-.homebtn.btn-outline:hover, .homebtn.btn-outline:focus{
+.homebtn.btn-outline:hover,
+.homebtn.btn-outline:focus {
   background: hsl(200, 50%, 90%);
 }
 
-.homebtn + .homebtn{
-  margin-left: .25rem;
+.homebtn + .homebtn {
+  margin-left: 0.25rem;
 }
 
 /*  */
@@ -321,57 +321,167 @@ nav li {
   }
 }
 /**/
-.title_Detail{
+.title_Detail {
   font-size: 2.5rem;
   text-align: center;
   font-weight: bold;
 }
 
-.status_Detail{
+.status_Detail {
   text-align: end;
   font-weight: bold;
   color: green;
   font-size: 1.5rem;
   margin-right: 7rem;
 }
-.leaders_Detail{
+.leaders_Detail {
   margin-left: 2rem;
   font-size: 1.4rem;
-  margin-bottom: .7em;
-
+  margin-bottom: 0.7em;
 }
-.teams_Detail{
+.teams_Detail {
   margin-left: 2rem;
   font-size: 1.4rem;
-  margin-bottom: .7em;
-
+  margin-bottom: 0.7em;
 }
-.just_Details{
+.just_Details {
   margin-left: 2rem;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
 }
-.description_Detail{
+.description_Detail {
   margin-left: 2rem;
   margin-right: 9rem;
   font-size: 1.5rem;
-  margin-bottom: .7em;
+  margin-bottom: 0.7em;
 }
-.just_History_Detail{
+.just_History_Detail {
   margin-left: 2rem;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
 }
-.history_Detail li{
+.history_Detail li {
   list-style: none;
   margin-left: 1rem;
   font-size: 1.4rem;
-  margin-bottom: .9rem;
+  margin-bottom: 0.9rem;
 }
-.started_date_Detail{
+.started_date_Detail {
   margin-left: 2rem;
   font-size: 1.5rem;
-  margin-bottom: .4em;
+  margin-bottom: 0.4em;
+}
+
+/* Add project page */
+
+.myform {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.myform h1 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.project_description textarea {
+  height: 150px;
+  min-height: 100px;
+  resize: none;
+  overflow: auto;
+  font-size: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #0b9c19;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #0d991b;
+  cursor: pointer;
+}
+
+.leader_btn {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add_leader_btn:hover {
+  background-color: #0062cc;
+}
+
+.remove_leader_btn {
+  background-color: #ff0000;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.project_leader_inputs .remove_leader_btn {
+  display: none;
+}
+
+.project_leader_inputs:hover .remove_leader_btn {
+  background-color: #ff5555;
+  display: inline-block;
 }

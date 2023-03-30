@@ -2,7 +2,7 @@
 main %}
 
 <form action="/add_project" method="post" class="myform">
-  <h1>Create your project</h1>
+  <h1>Create Your Project</h1>
 
   <div class="mb-3 form-group">
     <input
@@ -13,31 +13,40 @@ main %}
       minlength="5"
       maxlength="255"
       name="title"
-      placeholder="project title"
+      placeholder="Project title"
     />
   </div>
 
   <div class="mb-3 form-group">
-    <input
-      autocomplete="off"
-      class="form-control mx-auto w-auto"
-      type="text"
-      minlength="5"
-      maxlength="255"
-      name="project_leader"
-      placeholder="project leader"
-    />
+    <div class="project_leader_inputs">
+      <input
+        autocomplete="off"
+        class="form-control"
+        type="text"
+        minlength="5"
+        maxlength="255"
+        name="project_leader[]"
+        placeholder="Enter project leader's name"
+      />
+      <button class="leader_btn remove_leader_btn" type="button">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </button> 
+    </div>
+    <button class="leader_btn add_leader_btn" type="button">
+      <i class="fa-solid fa-circle-plus"></i>
+    </button>
   </div>
+
   <div class="mb-3 project_description">
-    <input
+    <textarea
       autocomplete="off"
       class="form-control mx-auto w-auto"
       type="text"
       minlength="5"
-      maxlength="500"
+      maxlength="5000"
       name="project_description"
-      placeholder="project description"
-    />
+      placeholder="Project description"
+    ></textarea>
   </div>
 
   <div class="mb-3 form-group">
