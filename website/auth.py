@@ -3,6 +3,7 @@ from .models import User
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db 
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint("auth", __name__)
 special_chars = re.compile('[^a-zA-Z0-9 ]')
@@ -19,13 +20,13 @@ def login():
         if user:
             if check_password_hash(user.hash, password):
                 flash('Logged in successfully!', category='success')
+                return redirect('/')
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
     # User reached route via GET (as by clicking a link or via redirect)
-    else:
-        return render_template('login.html')
+    return render_template('login.html', boolean=True)
 
 
 @auth.route('/register', methods=["GET", "POST"])
@@ -37,15 +38,16 @@ def register():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
+        user = User.query.filter_by(email=email).first()
         # Check some complexity requirements
-        if len(first_name) < 2:
+        if user:
+            flash('A user with this email already exists!', category='error')
+        elif len(first_name) < 2:
             flash('First Name must be at least 2 characters!', category='error')
         elif len(last_name) < 2:
             flash('Last Name must be at least 2 characters!', category='error')
         elif len(email) < 5:
             flash('Email must be at least 5 characters!', category='error')
-        elif False:  # TODO: check for existing email
-            flash('A user with this email already exists!', category='error')
         elif len(password1) < 8:
             flash('Password length must be at least 8 characters!', category='error')
         elif password1.islower():  # No uppercase letter
@@ -66,3 +68,6 @@ def register():
             flash('Account created!', category='success')
             return redirect('/')
     return render_template('register.html')
+
+@auth.route('/logout')
+def logout():
