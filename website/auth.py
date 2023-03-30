@@ -14,7 +14,15 @@ def login():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
-        return "<h1>Logged In!</h1>"
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.hash, password):
+                flash('Logged in successfully!', category='success')
+            else:
+                flash('Incorrect password, try again.', category='error')
+        else:
+            flash('Email does not exist.', category='error')
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template('login.html')
