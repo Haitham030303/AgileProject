@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block title %} Home {% endblock %} {% block main %}
+{% extends 'base.html' %} {% block title %} Add-project {% endblock %} {% block
+main %}
 
 <form action="/add_project" method="post" class="myform">
   <h1>Create your project</h1>
@@ -27,13 +28,6 @@
       placeholder="project leader"
     />
   </div>
-  <!-- {%% raw %%}
-  <button id="add-btn">Add Leader</button>
-  <div id="input-box" style="display: none">
-    <input type="text" name="leader" placeholder="project leader" />
-  </div>
-
-  {% endraw %} -->
   <div class="mb-3 project_description">
     <input
       autocomplete="off"
