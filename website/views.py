@@ -7,12 +7,12 @@ views = Blueprint("views_bp", __name__)
 @views.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('index.html', user=current_user)
 
 @views.route('/detail')
 @login_required
 def detail():
-    return render_template('detail.html')
+    return render_template('detail.html', user=current_user)
 
 
 @views.route('/add_project', methods=["POST", "GET"])
@@ -31,4 +31,4 @@ def add_project():
             f.write(f'{title}, {project_leader}\n{project_description}\n')
         return "<h1>Project Added!</h1>"
     else:
-        return render_template('add_project.html')
+        return render_template('add_project.html', user=current_user)

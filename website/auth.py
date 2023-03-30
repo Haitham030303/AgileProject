@@ -27,7 +27,7 @@ def login():
         else:
             flash('Email does not exist.', category='error')
     # User reached route via GET (as by clicking a link or via redirect)
-    return render_template('login.html', boolean=True)
+    return render_template('login.html', user=current_user)
 
 
 @auth.route('/register', methods=["GET", "POST"])
@@ -68,7 +68,7 @@ def register():
             db.session.commit()
             flash('Account created!', category='success')
             return redirect('/')
-    return render_template('register.html')
+    return render_template('register.html', user=current_user)
 
 @auth.route('/logout')
 @login_required
