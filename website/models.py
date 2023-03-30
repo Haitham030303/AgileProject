@@ -7,7 +7,7 @@ class Project(db.Model):
     title = db.Column(db.String(500), nullable=False)
     start_date = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
     description = db.Column(db.String(5000), unique=True, nullable=False)
-    status = db.Column(db.String(500), nullable=False)
+    status = db.Column(db.String(500))
 
     
 class User(db.Model, UserMixin):
@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-    task_date = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
+    task_date = db.Column(db.DateTime(timezone=True), default=func.now())
     task_description = db.Column(db.String(1000), nullable=False)
 
 class Collaborator(db.Model):
