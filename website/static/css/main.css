@@ -228,11 +228,14 @@ a {
 
 .alert-dismissable .close {
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
-  padding: 1rem 1.5rem;
+  padding-bottom: 0.5rem;
   color: inherit;
 }
+
+
 
 .fade {
   opacity: 0;
@@ -247,10 +250,14 @@ a {
   width: auto;
   background-color: inherit;
   border: none;
-  height: auto;
+  height: 100%;
   font-size: 2rem;
   overflow: hidden;
+  align-items: center;
+  padding-bottom: 20%;
 }
+
+
 
 .alert-success {
   color: #155724;
