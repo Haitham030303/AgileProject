@@ -1,25 +1,38 @@
 from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+from flask_login import LoginManager
 
 DB_NAME = "database.db"
 db = SQLAlchemy()
 
 def create_app():
-    from website.views import views
-    from website.auth import auth
 
     app = Flask(__name__)
-    app.register_blueprint(views, url_prefix="/")
-    app.register_blueprint(auth, url_prefix="/")
 
+    # Ensure templates are auto-reloaded
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SECRET_KEY'] = "dsaljf;ldsakjf;lkdsjf,cmlkjlkwqjfoijlsad;"
     db.init_app(app)
 
+    from website.views import views
+    from website.auth import auth
 
-    # Ensure templates are auto-reloaded
-    app.config["TEMPLATES_AUTO_RELOAD"] = True
+    app.register_blueprint(views, url_prefix="/")
+    app.register_blueprint(auth, url_prefix="/")
+
+    from website import models
+
+    create_database(app)
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+    
 
     return app
 

@@ -20,6 +20,7 @@ def login():
         if user:
             if check_password_hash(user.hash, password):
                 flash('Logged in successfully!', category='success')
+                login_user(user, remember=True)
                 return redirect('/')
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -70,5 +71,7 @@ def register():
     return render_template('register.html')
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return "<h1>Logged out</h1>"
+    logout_user()
+    return redirect('/login')

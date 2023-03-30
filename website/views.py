@@ -1,17 +1,22 @@
 from flask import Blueprint, request, render_template
+from flask_login import login_user, login_required, logout_user, current_user
+
 
 views = Blueprint("views_bp", __name__)
 
 @views.route('/')
+@login_required
 def index():
     return render_template('index.html')
 
 @views.route('/detail')
+@login_required
 def detail():
     return render_template('detail.html')
 
 
 @views.route('/add_project', methods=["POST", "GET"])
+@login_required
 def add_project():
     # get project info and store in a txt file for testing
     if request.method == 'POST':
