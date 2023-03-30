@@ -124,18 +124,20 @@ a {
 
 /*  */
 .P-owner {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
   font-size: 1.6rem;
 }
 .Project-collaborators {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
   font-size: 1.6rem;
 }
 
 .card {
   background-color: white;
   padding: 1rem;
-  margin: 2rem 3.8rem;
+  margin: 2rem 8rem;
   border: none;
   border-radius: 0.25rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -143,7 +145,7 @@ a {
 
 .P-Title {
   font-size: 3rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 .status {
@@ -157,9 +159,10 @@ a {
   font-size: 1.8rem;
   max-height: calc(2 * 1em * 1.4);
   line-height: 1.4;
+  margin-left: 1rem;
   overflow: hidden;
   position: relative;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.8rem;
 }
 .Description::before {
   content: "";
