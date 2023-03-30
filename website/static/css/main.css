@@ -389,8 +389,9 @@ nav li {
 
 .myform h1 {
   text-align: left;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .form-group {
@@ -446,7 +447,7 @@ nav li {
 }
 
 .leader_btn {
-  background-color: #007bff;
+  background-color: blue;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -454,9 +455,11 @@ nav li {
   margin-top: 10px;
   margin-left: 10px;
   padding: 10px 20px;
+  border-radius: 12px;
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
+  width: fit-content;
 }
 
 .add_leader_btn:hover {
