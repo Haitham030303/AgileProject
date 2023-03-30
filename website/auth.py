@@ -71,3 +71,4 @@ def register():
 
 @auth.route('/logout')
 def logout():
+    return "<h1>Logged out</h1>"
