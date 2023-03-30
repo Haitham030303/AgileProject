@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template
 from flask_login import login_user, login_required, logout_user, current_user
+from .models import User
 
 
 views = Blueprint("views_bp", __name__)
@@ -23,6 +24,9 @@ def add_project():
         title = request.form['title']
         project_leader = request.form['project_leader']
         project_description = request.form['project_description']
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+
         # TODO: add the project to database 
         # new_project = Project(title=title, leaders=project_leader, description=project_description )
         # db.session.add(new_project)
