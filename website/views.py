@@ -34,19 +34,17 @@ def indexs():
 
 
 
-@views.route('/detail')
+@views.route('/details/<int:id>')
 @login_required
-def detail():
-    project_id = request.form['project_id']
+def details(id):
 
-    project = Project.query.filter_by(id=project_id).first()
-    collaborator = Collaborator.query.filter_by(id=project_id).first()
+    project = Project.query.filter_by(id=id).first()
     if project:
          project_title = project.title
          project_status = project.status
          project_start_date = project.start_date
          project_description = project.description
-         return render_template('details.html', project_name=project_name)
+         return render_template('detail.html', user=current_user, project_title=project_title, project_status=project_status, project_start_date=project_start_date, project_description=project_description)
    
     return render_template('detail.html', user=current_user)
 

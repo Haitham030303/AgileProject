@@ -22,12 +22,12 @@
         {{ entry.description }}
     </div>
     <div class="card-footer">
-        <button class="homebtn" onclick="getDetails('{{ entry.id }}')">Details</button>
+        <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
         <button class="homebtn btn-outline">Join</button>
     </div>
-  </div>
+</div>
 {% endfor %}
-
+<!-- 
 <div class="card">
     <div class="title-grid">
         <div class="P-Title">Neuroscience Research</div>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="card">
-    <div class="title-grid">
+      <div class="title-grid">
         <div class="P-Title">AI Research</div>
         <div class="status">Status: New Project</div>
     </div>
@@ -65,6 +65,6 @@
         <button class="homebtn">Details</button>
         <button class="homebtn btn-outline">Join</button>
     </div>
-  </div>
+</div> -->
 {% endblock %}
 
