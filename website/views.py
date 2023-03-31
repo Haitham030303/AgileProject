@@ -7,7 +7,7 @@ views = Blueprint("views_bp", __name__)
 
 @views.route('/', methods=['GET'])
 @login_required
-def indexs():
+def index():
     descriptions = Project.query.all()
     entries = []
     for description in descriptions:
@@ -15,9 +15,13 @@ def indexs():
         entry['title'] = description.title
         entry['description'] = description.description
         collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
+        leader_entry = Leader.query.filter_by(project_id=description.id).first()
+        user_id2 = leader_entry.user_id
+        user_name2 = User.query.filter_by(id=user_id2).first().name
         user_id = collaborator_entry.user_id
         user_name = User.query.filter_by(id=user_id).first().name
         entry['user_name'] = user_name
+        entry['leader_name'] = user_name2
         entries.append(entry)
 
     return render_template('index.html', entries=entries, user=current_user)
@@ -42,7 +46,7 @@ def add_project():
             flash("description too small", category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
-        elif len(project_leaders) < 2:
+        elif len(project_leaders) < 1:
             flash("At least two leaders must be added", category='error')
         else:
             # TODO: add the project to database 
