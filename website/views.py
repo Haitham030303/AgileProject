@@ -16,6 +16,7 @@ def indexs():
             entry = {}
             entry['title'] = description.title
             entry['description'] = description.description
+            entry['id'] = description.id
             collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
             leader_entry = Leader.query.filter_by(project_id=description.id).first()
             if leader_entry:
@@ -30,9 +31,22 @@ def indexs():
 
     return render_template('index.html', entries=entries, user=current_user)
 
+
+
 @views.route('/detail')
 @login_required
 def detail():
+    project_id = request.form['project_id']
+
+    project = Project.query.filter_by(id=project_id).first()
+    collaborator = Collaborator.query.filter_by(id=project_id).first()
+    if project:
+         project_title = project.title
+         project_status = project.status
+         project_start_date = project.start_date
+         project_description = project.description
+         return render_template('details.html', project_name=project_name)
+   
     return render_template('detail.html', user=current_user)
 
 
