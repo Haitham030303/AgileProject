@@ -59,6 +59,6 @@ def add_project():
                 new_project.leaders.append(Leader(name=leader))
             db.session.add(new_project)
             db.session.commit()
-            return "<h1>Project Added!</h1>"
+            flash('Project added successfully.')
     return render_template('add_project.html', user=current_user)
 
