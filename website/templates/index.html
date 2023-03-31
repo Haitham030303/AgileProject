@@ -6,7 +6,29 @@
 
 {% block main %}
   
-  <div class="card">
+{% for entry in entries %}
+<div class="card">
+    <div class="title-grid">
+        <div class="P-Title">{{ entry.title }}</div>
+        <div class="status">Status: {{entry.status}}</div>
+    </div>
+    <div class="P-owner">
+        Project Leaders: {{ entry.user_name }}
+    </div>
+    <div class="Project-collaborators">
+        Project Collaborators: {{ entry.user_name }}
+    </div>
+    <div class="Description">
+        {{ entry.description }}
+    </div>
+    <div class="card-footer">
+        <button class="homebtn">Details</button>
+        <button class="homebtn btn-outline">Join</button>
+    </div>
+  </div>
+{% endfor %}
+
+<div class="card">
     <div class="title-grid">
         <div class="P-Title">Neuroscience Research</div>
         <div class="status">Status: New Project</div>

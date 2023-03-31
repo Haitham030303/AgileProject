@@ -1,15 +1,26 @@
-from flask import Blueprint, request, render_template, flash
+from flask import Blueprint, request, render_template, flash, request
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import Project
 from . import db 
 
-
 views = Blueprint("views_bp", __name__)
 
-@views.route('/')
+@app.route('/', methods=['GET'])
 @login_required
-def index():
-    return render_template('index.html', user=current_user)
+def indexs():
+    descriptions = Project.query.all()
+    entries = []
+    for description in descriptions:
+        entry = {}
+        entry['title'] = description.title
+        entry['description'] = description.description
+        collaborator_entry = collaborator.query.filter_by(project_id=description.id).first()
+        user_id = collaborator_entry.user_id
+        user_name = User.query.filter_by(id=user_id).first().name
+        entry['user_name'] = user_name
+        entries.append(entry)
+
+    return render_template('index.html', entries=entries)
 
 @views.route('/detail')
 @login_required
