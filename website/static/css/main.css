@@ -24,7 +24,7 @@ h1 {
   font-size: 3.2rem;
 }
 
-/* .myform {
+ .myform {
   width: 35rem;
   margin: 0 auto;
   display: flex;
@@ -32,7 +32,7 @@ h1 {
   align-items: center;
   flex-direction: column;
   height: 90vh;
-} */
+} 
 
 .form-group {
   text-align: center;
@@ -382,7 +382,7 @@ nav li {
 
 /* Add project page */
 
-.myform {
+.project_form {
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -393,19 +393,19 @@ nav li {
   width: 100%;
 }
 
-.myform h1 {
+.project_form h1 {
   text-align: left;
   font-size: 2.9rem;
   margin-bottom: 20px;
   font-weight: bold;
 }
 
-.form-group {
+.project_form .form-group {
   width: 25%;
   margin-bottom: 20px;
 }
 
-.form-control {
+.project_form .form-control {
   display: block;
   width: 100%;
   padding: 10px;
@@ -417,13 +417,13 @@ nav li {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.form-control:focus {
+.project_form .form-control:focus {
   outline: none;
   border-color: #80bdff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.project_description textarea {
+.project_form .project_description textarea {
   height: 150px;
   min-height: 100px;
   resize: none;
@@ -431,7 +431,7 @@ nav li {
   font-size: 1.6rem;
 }
 
-.btn {
+.project_form .btn {
   display: inline-block;
   padding: 10px 20px;
   font-size: 1.5rem;
@@ -447,7 +447,7 @@ nav li {
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
-.btn:hover {
+.project_form .btn:hover {
   background-color: #0d991b;
   cursor: pointer;
 }
