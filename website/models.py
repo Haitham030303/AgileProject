@@ -7,7 +7,7 @@ class Project(db.Model):
     title = db.Column(db.String(500), nullable=False)
     start_date = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
     description = db.Column(db.String(5000), unique=True, nullable=False)
-    status = db.Column(db.String(500))
+    status = db.Column(db.String(500), default="New Project")
 
     
 class User(db.Model, UserMixin):
