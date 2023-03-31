@@ -42,7 +42,7 @@ def add_project():
             flash("description too small", category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
-        elif len(project_leaders) < 2:
+        elif len(project_leaders) < 1:
             flash("At least two leaders must be added", category='error')
         else:
             # TODO: add the project to database 
