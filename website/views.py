@@ -2,12 +2,15 @@ from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from website.models import Project, User, Leader, Collaborator
 from . import db 
+import re
 
 views = Blueprint("views_bp", __name__)
+special_chars = re.compile('[^a-zA-Z0-9 ]')
+
 
 @views.route('/', methods=['GET'])
 @login_required
-def indexs():
+def index():
     entries = []
     descriptions = Project.query.all()
     
@@ -75,7 +78,11 @@ def add_project():
         project_description = request.form.get('project_description')
         
         if len(project_description) < 1:
-            flash("description too small", category='error')
+            flash("Description too small", category='error')
+        if len(project_description) > 5000:
+            flash("Description too large", category='error')
+        elif special_chars.search(project_leaders):
+            flash('Leader name should not a special character!', category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
         # elif len(project_leaders) < 1:
