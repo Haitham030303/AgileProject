@@ -26,12 +26,11 @@
   </head>
   <body>
     <nav>
-      <a class="logo" href="#">Logo</a>
+      <a class="logo" href="#">Project Hive</a>
       <ul>
         {% if user.is_authenticated %}
         <li><a href="/">Home</a></li>
         <li><a href="/add_project">Add a project</a></li>
-        <li><a href="/detail">detail</a></li>
         <li><a href="/logout">Logout</a></li>
         {% else %}
         <li><a href="/login">Login</a></li>

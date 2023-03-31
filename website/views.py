@@ -2,12 +2,15 @@ from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from website.models import Project, User, Leader, Collaborator
 from . import db 
+import re
 
 views = Blueprint("views_bp", __name__)
+special_chars = re.compile('[^a-zA-Z0-9 ]')
+
 
 @views.route('/', methods=['GET'])
 @login_required
-def indexs():
+def index():
     entries = []
     descriptions = Project.query.all()
     
@@ -39,14 +42,29 @@ def indexs():
 def details(id):
 
     project = Project.query.filter_by(id=id).first()
+    collaborators = Collaborator.query.filter_by(project_id=id).all()
+    leaders = Leader.query.filter_by(project_id=id).all()
+
     if project:
          project_title = project.title
          project_status = project.status
          project_start_date = project.start_date
          project_description = project.description
-         return render_template('detail.html', user=current_user, project_title=project_title, project_status=project_status, project_start_date=project_start_date, project_description=project_description)
-   
+
+         if collaborators:
+             collaborator_names = [c.user.username for c in collaborators]
+         else:
+             collaborator_names = []
+
+         if leaders:
+             leader_names = [l.user.username for l in leaders]
+         else:
+             leader_names = []
+
+         return render_template('detail.html', user=current_user, project_title=project_title, project_status=project_status, project_start_date=project_start_date, project_description=project_description, collaborator_names=collaborator_names, leader_names=leader_names)
+
     return render_template('detail.html', user=current_user)
+
 
 
 
@@ -58,9 +76,24 @@ def add_project():
         title = request.form.get('title')
         project_leaders = request.form.getlist('project_leaders[]')
         project_description = request.form.get('project_description')
-        
+        # valid_name = True
+        # for project_leader in project_leaders:
+        #     if special_chars.search(project_leader):
+        #         flash('Leader name should not contain a special character!', category='error')
+        #         valid_name=False
+        #     elif re.search('\d', project_leader):
+        #         flash('Password must not contain a number!', category='error')
+        #         valid_name=False
         if len(project_description) < 1:
-            flash("description too small", category='error')
+            flash("Description too small", category='error')
+        # elif not valid_name:
+        #     flash('Please enter a valid leader name!', category='error')
+        elif len(project_description) > 5000:
+            flash("Description too large", category='error')
+        elif special_chars.search(project_leaders):
+            flash('Leader name should not contain a special character!', category='error')
+        elif re.search('\d', project_leaders):
+            flash('Password must not contain a number!', category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
         # elif len(project_leaders) < 1:
@@ -83,6 +116,6 @@ def add_project():
                 db.session.add(leader)
             db.session.add(new_project)
             db.session.commit()
-            flash('Project added successfully.')
+            flash('Project added successfully.', category='success')
     return render_template('add_project.html', user=current_user)
 
