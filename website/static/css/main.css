@@ -399,7 +399,7 @@ nav li {
 
 .myform h1 {
   text-align: left;
-  font-size: 2.5rem;
+  font-size: 2.9rem;
   margin-bottom: 20px;
   font-weight: bold;
 }
@@ -413,7 +413,7 @@ nav li {
   display: block;
   width: 100%;
   padding: 10px;
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -432,7 +432,7 @@ nav li {
   min-height: 100px;
   resize: none;
   overflow: auto;
-  font-size: 20px;
+  font-size: 1.6rem;
 }
 
 .btn {
@@ -457,7 +457,7 @@ nav li {
 }
 
 .leader_btn {
-  background-color: blue;
+  /* background-color: blue;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -469,7 +469,20 @@ nav li {
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s ease-in-out;
-  width: fit-content;
+  width: fit-content; */
+  width: 80px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .add_leader_btn:hover {
@@ -496,5 +509,5 @@ nav li {
 
 .project_leader_inputs:hover .remove_leader_btn {
   background-color: #ff5555;
-  display: inline-block;
+  display: block;
 }

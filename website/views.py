@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from .models import User
+from .models import Project
+from . import db 
 
 
 views = Blueprint("views_bp", __name__)
@@ -31,13 +32,9 @@ def add_project():
             flash("Title must be at least 2 characters", category='error')
         elif len(project_leader) < 2:
             flash("Name must be at least 2 characters", category='error')
-
         else:
-            # TODO: add the project to database 
-            # new_project = Project(title=title, leaders=project_leader, description=project_description )
-            # db.session.add(new_project)
-            # db.session.commit()
-            with open('projects.txt', 'a') as f:
-                f.write(f'{title} {project_leader} {project_description}\n')
+            new_project = Project(title=title, leaders=project_leader, description=project_description)
+            db.session.add(new_project)
+            db.session.commit()
             return "<h1>Project Added!</h1>"
     return render_template('add_project.html', user=current_user)
