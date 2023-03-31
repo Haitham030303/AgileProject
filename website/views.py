@@ -74,7 +74,7 @@ def add_project():
     # get project info and store in a txt file for testing
     if request.method == 'POST':
         title = request.form.get('title')
-        project_leaders = request.form.getlist('project_leaders[]')
+        project_leaders = request.form.getlist('project_leader[]')
         project_description = request.form.get('project_description')
         # valid_name = True
         # for project_leader in project_leaders:
@@ -90,10 +90,10 @@ def add_project():
         #     flash('Please enter a valid leader name!', category='error')
         elif len(project_description) > 5000:
             flash("Description too large", category='error')
-        elif special_chars.search(project_leaders):
-            flash('Leader name should not contain a special character!', category='error')
-        elif re.search('\d', project_leaders):
-            flash('Password must not contain a number!', category='error')
+        # elif special_chars.search(project_leaders):
+        #     flash('Leader name should not contain a special character!', category='error')
+        # elif re.search('\d', project_leaders):
+        #     flash('Password must not contain a number!', category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
         # elif len(project_leaders) < 1:

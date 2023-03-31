@@ -24,20 +24,15 @@ h1 {
   font-size: 3.2rem;
 }
 
- .myform {
+.myform {
   width: 35rem;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-<<<<<<< HEAD
   height: 90vh;
-} 
-=======
-  height: 80vh;
 }
->>>>>>> 965026631ee011e6a0055536f3feff95721adb77
 
 .form-group {
   text-align: center;
@@ -49,7 +44,7 @@ h1 {
   width: 40rem;
 }
 
-.btn {
+.myform .btn {
   color: white;
   background-color: #0d6efd;
   padding: 1.5rem;
@@ -69,23 +64,6 @@ h1 {
   color: #6c757d;
   text-align: center;
 }
-
-/* input[type="project description"] {
-  border: 1px solid #ced4da;
-  box-sizing: border-box;
-  margin-bottom: 5rem;
-  padding: 1.5rem;
-  padding-right: 0;
-  border-radius: 5px;
-  transition: border-color 0.5s, box-shadow 0.5s;
-}
-
-input[type="project description"]
-{ 
-    outline: none;
-    width: 100%;
-    height: 100%;
-} */
 
 input[type="text"],
 input[type="email"],
@@ -458,19 +436,6 @@ nav li {
 }
 
 .leader_btn {
-  /* background-color: blue;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-  margin-left: 10px;
-  padding: 10px 20px;
-  border-radius: 12px;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 0.3s ease-in-out;
-  width: fit-content; */
   width: 80px;
   height: 40px;
   border: none;

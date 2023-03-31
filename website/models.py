@@ -17,8 +17,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(500), unique=True)
     hash = db.Column(db.String(500))
     
-
-
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
@@ -33,6 +31,3 @@ class Leader(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-# class Leader(db.Model):
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-#     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
