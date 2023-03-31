@@ -67,7 +67,7 @@ def add_project():
         # elif len(project_leaders) < 1:
         #     flash("At least two leaders must be added", category='error')
         else:
-            # TODO: add the project to database 
+            # add the project to database 
             new_project = Project(title=title, description=project_description)
             for leader in project_leaders:
                 new_project.leaders.append(Leader(name=leader))
