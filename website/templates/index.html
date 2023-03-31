@@ -15,9 +15,11 @@
     <div class="P-owner">
         Project Leaders: {{ entry.leader_name }}
     </div>
+    {% if entry.user_name %}
     <div class="Project-collaborators">
         Project Collaborators: {{ entry.user_name }}
     </div>
+    {% endif %}
     <div class="Description">
         {{ entry.description }}
     </div>
