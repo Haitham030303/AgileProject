@@ -3,8 +3,10 @@
     <div class="Detail">
         <div class="title_Detail"> {{ project_title }}</div>
         <div class="status_Detail"> Status: {{ project_status }}</div>
-        <div class="leaders_Detail"> <b>Leaders -</b> Yonas, Abel, Yohannes</div>
-        <div class="teams_Detail"> <b>Collaborators -</b> Wael, Naol, Haitham</div>
+        <div class="leaders_Detail"> <b>Leaders -</b> {{ leader_names }}</div>
+        {% if collaborator_names %}
+            <div class="teams_Detail"> <b>Collaborators -</b> {{ collaborator_names }}</div>
+        {% endif %}
         <div class="started_date_Detail"><b>Started Date:</b> {{ project_start_date }}</div>
         <div class="just_Details">Details:</div>
         <div class="description_Detail">
