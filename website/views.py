@@ -33,22 +33,23 @@ def detail():
 def add_project():
     # get project info and store in a txt file for testing
     if request.method == 'POST':
-        title = request.form['title']
-        project_leader = request.form['project_leader']
-        project_description = request.form['project_description']
+        title = request.form.get('title')
+        project_leaders = request.form.getlist('project_leader[]')
+        project_description = request.form.get('project_description')
         
         if len(project_description) < 1:
             flash("description too small", category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
-        elif len(project_leader) < 2:
-            flash("Name must be at least 2 characters", category='error')
+        elif len(project_leaders) < 2:
+            flash("At least two leaders must be added", category='error')
         else:
             # TODO: add the project to database 
+            new_project = Project(title=title, description=project_description )
+            for leader in project_leaders:
+                new_project.leaders.append(ProjectLeader(name=leader))
             db.session.add(new_project)
-            new_project = Project(title=title, leaders=project_leader, description=project_description )
             db.session.commit()
-            # with open('projects.txt', 'a') as f:
-            #     f.write(f'{title} {project_leader} {project_description}\n')
             return "<h1>Project Added!</h1>"
     return render_template('add_project.html', user=current_user)
+
