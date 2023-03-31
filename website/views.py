@@ -16,6 +16,7 @@ def indexs():
             entry = {}
             entry['title'] = description.title
             entry['description'] = description.description
+            entry['status'] = description.status
             entry['id'] = description.id
             collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
             leader_entry = Leader.query.filter_by(project_id=description.id).first()
