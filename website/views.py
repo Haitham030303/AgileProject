@@ -78,7 +78,9 @@ def add_project():
         project_description = request.form.get('project_description')
         
         if len(project_description) < 1:
-            flash("description too small", category='error')
+            flash("Description too small", category='error')
+        if len(project_description) > 5000:
+            flash("Description too large", category='error')
         elif special_chars.search(project_leaders):
             flash('Leader name should not a special character!', category='error')
         elif len(title) < 2:
