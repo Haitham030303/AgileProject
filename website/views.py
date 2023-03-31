@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from website.models import Collaborator, Project, User, Leader
+from website.models import Project, User, Leader, Collaborator
 from . import db 
 
 views = Blueprint("views_bp", __name__)
@@ -73,6 +73,6 @@ def add_project():
                 new_project.leaders.append(Leader(name=leader))
             db.session.add(new_project)
             db.session.commit()
-            return "<h1>Project Added!</h1>"
+            flash('Project added successfully.')
     return render_template('add_project.html', user=current_user)
 
