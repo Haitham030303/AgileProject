@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from .models import User
+from .models import User, Project
+
 
 
 views = Blueprint("views_bp", __name__)
@@ -34,9 +35,9 @@ def add_project():
 
         else:
             # TODO: add the project to database 
-            # new_project = Project(title=title, leaders=project_leader, description=project_description )
-            # db.session.add(new_project)
-            # db.session.commit()
+            db.session.add(new_project)
+            new_project = Project(title=title, leaders=project_leader, description=project_description )
+            db.session.commit()
             with open('projects.txt', 'a') as f:
                 f.write(f'{title} {project_leader} {project_description}\n')
             return "<h1>Project Added!</h1>"
