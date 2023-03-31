@@ -7,7 +7,7 @@ views = Blueprint("views_bp", __name__)
 
 @views.route('/', methods=['GET'])
 @login_required
-def indexs():
+def index():
     descriptions = Project.query.all()
     entries = []
     for description in descriptions:
