@@ -39,18 +39,18 @@ def add_project():
     # get project info and store in a txt file for testing
     if request.method == 'POST':
         title = request.form.get('title')
-        project_leaders = request.form.getlist('project_leader[]')
+        project_leaders = request.form.getlist('project_leaders[]')
         project_description = request.form.get('project_description')
         
         if len(project_description) < 1:
             flash("description too small", category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
-        elif len(project_leaders) < 1:
-            flash("At least two leaders must be added", category='error')
+        # elif len(project_leaders) < 1:
+        #     flash("At least two leaders must be added", category='error')
         else:
             # TODO: add the project to database 
-            new_project = Project(title=title, description=project_description )
+            new_project = Project(title=title, description=project_description)
             for leader in project_leaders:
                 new_project.leaders.append(Leader(name=leader))
             db.session.add(new_project)
