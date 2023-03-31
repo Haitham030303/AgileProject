@@ -15,9 +15,13 @@ def indexs():
         entry['title'] = description.title
         entry['description'] = description.description
         collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
+        leader_entry = Leader.query.filter_by(project_id=description.id).first()
+        user_id2 = leader_entry.user_id
+        user_name2 = User.query.filter_by(id=user_id2).first().name
         user_id = collaborator_entry.user_id
         user_name = User.query.filter_by(id=user_id).first().name
         entry['user_name'] = user_name
+        entry['leader_name'] = user_name2
         entries.append(entry)
 
     return render_template('index.html', entries=entries, user=current_user)
