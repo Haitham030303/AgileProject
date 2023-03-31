@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from website.models import Collaborator, Project, User, Leader
+from website.models import Project, User, Leader, Collaborator
 from . import db 
 
 views = Blueprint("views_bp", __name__)
@@ -8,27 +8,45 @@ views = Blueprint("views_bp", __name__)
 @views.route('/', methods=['GET'])
 @login_required
 def indexs():
-    descriptions = Project.query.all()
     entries = []
-    for description in descriptions:
-        entry = {}
-        entry['title'] = description.title
-        entry['description'] = description.description
-        collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
-        leader_entry = Leader.query.filter_by(project_id=description.id).first()
-        user_id2 = leader_entry.user_id
-        user_name2 = User.query.filter_by(id=user_id2).first().name
-        user_id = collaborator_entry.user_id
-        user_name = User.query.filter_by(id=user_id).first().name
-        entry['user_name'] = user_name
-        entry['leader_name'] = user_name2
-        entries.append(entry)
+    descriptions = Project.query.all()
+    
+    if descriptions:    
+        for description in descriptions:
+            entry = {}
+            entry['title'] = description.title
+            entry['description'] = description.description
+            entry['id'] = description.id
+            collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
+            leader_entry = Leader.query.filter_by(project_id=description.id).first()
+            if leader_entry:
+                user_id2 = leader_entry.user_id
+                user_name2 = User.query.filter_by(id=user_id2).first().name
+                entry['leader_name'] = user_name2
+            if collaborator_entry:
+                user_id = collaborator_entry.user_id
+                user_name = User.query.filter_by(id=user_id).first().name
+                entry['user_name'] = user_name
+            entries.append(entry)
 
     return render_template('index.html', entries=entries, user=current_user)
+
+
 
 @views.route('/detail')
 @login_required
 def detail():
+    project_id = request.form['project_id']
+
+    project = Project.query.filter_by(id=project_id).first()
+    collaborator = Collaborator.query.filter_by(id=project_id).first()
+    if project:
+         project_title = project.title
+         project_status = project.status
+         project_start_date = project.start_date
+         project_description = project.description
+         return render_template('details.html', project_name=project_name)
+   
     return render_template('detail.html', user=current_user)
 
 
@@ -55,6 +73,6 @@ def add_project():
                 new_project.leaders.append(Leader(name=leader))
             db.session.add(new_project)
             db.session.commit()
-            return "<h1>Project Added!</h1>"
+            flash('Project added successfully.')
     return render_template('add_project.html', user=current_user)
 

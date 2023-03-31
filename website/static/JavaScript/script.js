@@ -5,7 +5,7 @@ $(document).ready(function() {   //close button alert
 });
 
 
-// Find all "remove" buttons and add a click event listener to each one
+// remove button
 const removeBtns = document.querySelectorAll('.remove_leader_btn');
 if (removeBtns.length === 1) {
   removeBtns[0].setAttribute("disabled", true);
@@ -18,7 +18,7 @@ removeBtns.forEach((btn) => {
   });
 });
 
-// Find the "add" button and add a click event listener
+// add button
 const addBtn = document.querySelector('.add_leader_btn');
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -44,5 +44,7 @@ addBtn.addEventListener('click', (e) => {
   inputContainer.appendChild(removeBtn);
   addBtn.parentNode.insertBefore(inputContainer, addBtn);
 });
+
+
 
 
