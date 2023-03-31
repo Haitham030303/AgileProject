@@ -75,3 +75,8 @@ def register():
 def logout():
     logout_user()
     return redirect('/login')
+
+#validate email
+@auth.route('/reset_password')
+def reset_password():
+    return render_template('reset_request.html', title='Reset Request')
