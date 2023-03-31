@@ -8,7 +8,7 @@ class Project(db.Model):
     start_date = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
     description = db.Column(db.String(5000), unique=True, nullable=False)
     status = db.Column(db.String(500), default="New Project")
-
+    leaders = db.relationship('User', secondary='leader', backref='projects')
     
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(500), nullable=False)
     email = db.Column(db.String(500), unique=True)
     hash = db.Column(db.String(500))
+    
+
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,5 +30,9 @@ class Collaborator(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
 
 class Leader(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+# class Leader(db.Model):
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+#     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
