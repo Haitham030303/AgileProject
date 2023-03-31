@@ -24,15 +24,20 @@ h1 {
   font-size: 3.2rem;
 }
 
-.myform {
+ .myform {
   width: 35rem;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+<<<<<<< HEAD
+  height: 90vh;
+} 
+=======
   height: 80vh;
 }
+>>>>>>> 965026631ee011e6a0055536f3feff95721adb77
 
 .form-group {
   text-align: center;
@@ -238,8 +243,6 @@ a {
   color: inherit;
 }
 
-
-
 .fade {
   opacity: 0;
   transition: opacity 0.15s linear;
@@ -259,8 +262,6 @@ a {
   align-items: center;
   padding-bottom: 20%;
 }
-
-
 
 .alert-success {
   color: #155724;
@@ -390,7 +391,7 @@ nav li {
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 20px;
+  padding: 4rem;
   background-color: #f7f7f7;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -479,15 +480,15 @@ nav li {
   font-size: 16px;
   border-radius: 40px;
   text-align: center;
-  box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
   cursor: pointer;
 }
 
 .add_leader_btn:hover {
-  background-color: #0062cc;
-}  
+  background-color: #2f2d22;
+}
 
 .remove_leader_btn {
   background-color: #ff0000;

@@ -25,7 +25,7 @@ def index():
             leader_entry = Leader.query.filter_by(project_id=description.id).first()
             if leader_entry:
                 user_id2 = leader_entry.user_id
-                user_name2 = User.query.filter_by(id=user_id2).first().name
+                user_name2 = User.query.filter_by(id=user_id2).first().first_name
                 entry['leader_name'] = user_name2
             if collaborator_entry:
                 user_id = collaborator_entry.user_id
@@ -101,8 +101,19 @@ def add_project():
         else:
             # add the project to database 
             new_project = Project(title=title, description=project_description)
-            for leader in project_leaders:
-                new_project.leaders.append(Leader(name=leader))
+            leader_names = request.form.getlist('project_leader[]')
+            for name in leader_names:
+                full_name = name.split()
+                if len(full_name) == 1:
+                    first_name = full_name[0]
+                    last_name = ''
+                else:
+                    first_name, last_name = full_name
+                leader = User.query.filter_by(first_name=first_name, last_name=last_name).first()
+                if not leader:
+                    leader = User(first_name=first_name, last_name=last_name)
+                new_project.leaders.append(leader)
+                db.session.add(leader)
             db.session.add(new_project)
             db.session.commit()
             flash('Project added successfully.', category='success')
