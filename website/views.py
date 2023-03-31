@@ -39,14 +39,29 @@ def indexs():
 def details(id):
 
     project = Project.query.filter_by(id=id).first()
+    collaborators = Collaborator.query.filter_by(project_id=id).all()
+    leaders = Leader.query.filter_by(project_id=id).all()
+
     if project:
          project_title = project.title
          project_status = project.status
          project_start_date = project.start_date
          project_description = project.description
-         return render_template('detail.html', user=current_user, project_title=project_title, project_status=project_status, project_start_date=project_start_date, project_description=project_description)
-   
+
+         if collaborators:
+             collaborator_names = [c.user.username for c in collaborators]
+         else:
+             collaborator_names = []
+
+         if leaders:
+             leader_names = [l.user.username for l in leaders]
+         else:
+             leader_names = []
+
+         return render_template('detail.html', user=current_user, project_title=project_title, project_status=project_status, project_start_date=project_start_date, project_description=project_description, collaborator_names=collaborator_names, leader_names=leader_names)
+
     return render_template('detail.html', user=current_user)
+
 
 
 
