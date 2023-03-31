@@ -44,7 +44,3 @@ addBtn.addEventListener('click', (e) => {
   inputContainer.appendChild(removeBtn);
   addBtn.parentNode.insertBefore(inputContainer, addBtn);
 });
-
-
-
-
