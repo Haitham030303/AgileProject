@@ -435,7 +435,7 @@ nav li {
   font-size: 1.6rem;
 }
 
-.btn {
+.project_form .btn {
   display: inline-block;
   padding: 10px 20px;
   font-size: 1.5rem;
@@ -451,7 +451,7 @@ nav li {
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
-.btn:hover {
+.project_form .btn:hover {
   background-color: #0d991b;
   cursor: pointer;
 }
