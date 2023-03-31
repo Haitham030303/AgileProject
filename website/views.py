@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from website.models import Project, User, Leader
+from website.models import Project, User, Leader, Collaborator
 from . import db 
 
 views = Blueprint("views_bp", __name__)
@@ -14,7 +14,7 @@ def indexs():
         entry = {}
         entry['title'] = description.title
         entry['description'] = description.description
-        collaborator_entry = collaborator.query.filter_by(project_id=description.id).first()
+        collaborator_entry = Collaborator.query.filter_by(project_id=description.id).first()
         user_id = collaborator_entry.user_id
         user_name = User.query.filter_by(id=user_id).first().name
         entry['user_name'] = user_name
