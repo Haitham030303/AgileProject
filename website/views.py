@@ -1,15 +1,26 @@
-from flask import Blueprint, request, render_template, flash
+from flask import Blueprint, request, render_template, flash, request
 from flask_login import login_user, login_required, logout_user, current_user
-from .models import User, Project
-
-
+from .models import Project, User
+from . import db 
 
 views = Blueprint("views_bp", __name__)
 
-@views.route('/')
+@views.route('/', methods=['GET'])
 @login_required
-def index():
-    return render_template('index.html', user=current_user)
+def indexs():
+    descriptions = Project.query.all()
+    entries = []
+    for description in descriptions:
+        entry = {}
+        entry['title'] = description.title
+        entry['description'] = description.description
+        collaborator_entry = collaborator.query.filter_by(project_id=description.id).first()
+        user_id = collaborator_entry.user_id
+        user_name = User.query.filter_by(id=user_id).first().name
+        entry['user_name'] = user_name
+        entries.append(entry)
+
+    return render_template('index.html', entries=entries)
 
 @views.route('/detail')
 @login_required
@@ -32,13 +43,12 @@ def add_project():
             flash("Title must be at least 2 characters", category='error')
         elif len(project_leader) < 2:
             flash("Name must be at least 2 characters", category='error')
-
         else:
             # TODO: add the project to database 
             db.session.add(new_project)
             new_project = Project(title=title, leaders=project_leader, description=project_description )
             db.session.commit()
-            with open('projects.txt', 'a') as f:
-                f.write(f'{title} {project_leader} {project_description}\n')
+            # with open('projects.txt', 'a') as f:
+            #     f.write(f'{title} {project_leader} {project_description}\n')
             return "<h1>Project Added!</h1>"
     return render_template('add_project.html', user=current_user)
