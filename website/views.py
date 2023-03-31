@@ -1,6 +1,6 @@
-from flask import Blueprint, request, render_template, flash, request
+from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
-from .models import Project, User
+from website.models import Project, User, Leader
 from . import db 
 
 views = Blueprint("views_bp", __name__)
@@ -20,12 +20,13 @@ def indexs():
         entry['user_name'] = user_name
         entries.append(entry)
 
-    return render_template('index.html', entries=entries)
+    return render_template('index.html', entries=entries, user=current_user)
 
 @views.route('/detail')
 @login_required
 def detail():
     return render_template('detail.html', user=current_user)
+
 
 
 @views.route('/add_project', methods=["POST", "GET"])
@@ -47,7 +48,7 @@ def add_project():
             # TODO: add the project to database 
             new_project = Project(title=title, description=project_description )
             for leader in project_leaders:
-                new_project.leaders.append(ProjectLeader(name=leader))
+                new_project.leaders.append(Leader(name=leader))
             db.session.add(new_project)
             db.session.commit()
             return "<h1>Project Added!</h1>"
