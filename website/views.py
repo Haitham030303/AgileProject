@@ -76,13 +76,24 @@ def add_project():
         title = request.form.get('title')
         project_leaders = request.form.getlist('project_leaders[]')
         project_description = request.form.get('project_description')
-        
+        # valid_name = True
+        # for project_leader in project_leaders:
+        #     if special_chars.search(project_leader):
+        #         flash('Leader name should not contain a special character!', category='error')
+        #         valid_name=False
+        #     elif re.search('\d', project_leader):
+        #         flash('Password must not contain a number!', category='error')
+        #         valid_name=False
         if len(project_description) < 1:
             flash("Description too small", category='error')
-        if len(project_description) > 5000:
+        # elif not valid_name:
+        #     flash('Please enter a valid leader name!', category='error')
+        elif len(project_description) > 5000:
             flash("Description too large", category='error')
         elif special_chars.search(project_leaders):
-            flash('Leader name should not a special character!', category='error')
+            flash('Leader name should not contain a special character!', category='error')
+        elif re.search('\d', project_leaders):
+            flash('Password must not contain a number!', category='error')
         elif len(title) < 2:
             flash("Title must be at least 2 characters", category='error')
         # elif len(project_leaders) < 1:
@@ -94,6 +105,6 @@ def add_project():
                 new_project.leaders.append(Leader(name=leader))
             db.session.add(new_project)
             db.session.commit()
-            flash('Project added successfully.')
+            flash('Project added successfully.', category='success')
     return render_template('add_project.html', user=current_user)
 
