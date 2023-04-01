@@ -97,7 +97,7 @@ def add_project():
 
         project_leader_ids = []
         emails_are_valid=True
-        
+        emails = set()
         for email in project_leader_emails:
             leader = User.query.filter_by(email=email).first()
             if not leader:
@@ -105,6 +105,11 @@ def add_project():
                 break
             else:
                 project_leader_ids.append(leader.id)
+                if email not in emails:
+                    emails.add(email)
+                else:
+                    flash('Please enter each email only once.', category='error')
+                    break
         else:
             if len(project_description) < 1:
                 flash("project too small", category='error')
