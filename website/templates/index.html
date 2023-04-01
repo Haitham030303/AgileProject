@@ -13,8 +13,12 @@
         <div class="status">Status: {{entry.status}}</div>
     </div>
     <div class="P-owner">
-        Project Leaders: {{ entry.leader_name }}
-    </div>
+        {% if entry.leader_names|length == 1 %}
+            Project Leader: {{ entry.leader_names[0] }}
+        {% elif entry.leader_names|length > 1 %}
+            Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
+        {% endif %}
+    </div>  
     {% if entry.user_name %}
     <div class="Project-collaborators">
         Project Collaborators: {{ entry.user_name }}

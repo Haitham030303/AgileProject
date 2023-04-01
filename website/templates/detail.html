@@ -1,16 +1,16 @@
 {% extends "base.html" %} {% block title %} detail {% endblock %} {% block main
     %}
     <div class="Detail">
-        <div class="title_Detail"> {{ project_title }}</div>
-        <div class="status_Detail"> Status: {{ project_status }}</div>
-        <div class="leaders_Detail"> <b>Leaders -</b> {{ leader_names }}</div>
-        {% if collaborator_names %}
-            <div class="teams_Detail"> <b>Collaborators -</b> {{ collaborator_names }}</div>
+        <div class="title_Detail"> {{ details.title }}</div>
+        <div class="status_Detail"> Status: {{ details.status }}</div>
+        <div class="leaders_Detail"> <b>Leaders -</b> {{ details.leader_names }}</div>
+        {% if details.collaborator_names %}
+            <div class="teams_Detail"> <b>Collaborators -</b> {{ details.collaborator_names }}</div>
         {% endif %}
-        <div class="started_date_Detail"><b>Started Date:</b> {{ project_start_date }}</div>
+        <div class="started_date_Detail"><b>Started Date:</b> {{ details.start_date }}</div>
         <div class="just_Details">Details:</div>
         <div class="description_Detail">
-           {{ project_description }}
+           {{ details.description }}
         </div>
         <hr>
         <div class="just_History_Detail">History: </div>
