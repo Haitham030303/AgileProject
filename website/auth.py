@@ -27,6 +27,8 @@ def login():
         else:
             flash('Email does not exist.', category='error')
     # User reached route via GET (as by clicking a link or via redirect)
+    elif current_user.is_authenticated:
+        return redirect(url_for('index'))
     return render_template('login.html', user=current_user)
 
 
