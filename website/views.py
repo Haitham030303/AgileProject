@@ -40,10 +40,11 @@ def index():
 @views.route('/details/<int:id>')
 @login_required
 def details(id):
-
     project = Project.query.filter_by(id=id).first()
     collaborators = Collaborator.query.filter_by(project_id=id).all()
     leaders = Leader.query.filter_by(project_id=id).all()
+    leader_ids = [leader.user_id for leader in leaders]  # Extract the 'user_id' attribute for each Leader object
+    users = User.query.filter(User.id.in_(leader_ids)).all()
 
     if project:
          project_title = project.title
@@ -52,18 +53,19 @@ def details(id):
          project_description = project.description
 
          if collaborators:
-             collaborator_names = [c.user.username for c in collaborators]
+             collaborator_names = ', '.join([l.first_name for l in users])
          else:
-             collaborator_names = []
+             collaborator_names = ''
 
          if leaders:
-             leader_names = [l.user.username for l in leaders]
+             leader_names = ', '.join([l.first_name for l in users])
          else:
-             leader_names = []
+             leader_names = ''
 
          return render_template('detail.html', user=current_user, project_title=project_title, project_status=project_status, project_start_date=project_start_date, project_description=project_description, collaborator_names=collaborator_names, leader_names=leader_names)
 
     return render_template('detail.html', user=current_user)
+
 
 
 
