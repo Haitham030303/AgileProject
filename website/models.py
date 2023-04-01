@@ -28,6 +28,8 @@ class Collaborator(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
 
 class Leader(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)
+# class Leader(db.Model):
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+#     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), primary_key=True)

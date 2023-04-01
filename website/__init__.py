@@ -14,6 +14,8 @@ def create_app():
     app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SECRET_KEY'] = "dsaljf;ldsakjf;lkdsjf,cmlkjlkwqjfoijlsad;"
+    app.config['LOGIN_MESSAGE'] = 'Please log in to continue.'
+
     db.init_app(app)
 
     from website.views import views
@@ -28,6 +30,8 @@ def create_app():
     create_database(app)
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
+    login_manager.login_message = 'Please log in to continue.' # set the custom login message
+
     login_manager.init_app(app)
 
     @login_manager.user_loader
