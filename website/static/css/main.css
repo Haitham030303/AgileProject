@@ -30,12 +30,9 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    <<<<<<< HEAD height: 90vh;
+    height: 80vh;
 }
 
-=======height: 80vh;
-
-}
 .form-group {
     text-align: center;
     width: 30rem;
