@@ -31,7 +31,7 @@ addBtn.addEventListener('click', (e) => {
   input.setAttribute('minlength', '5');
   input.setAttribute('maxlength', '255');
   input.setAttribute('name', 'project_leader[]');
-  input.setAttribute('placeholder', 'Project leader');
+  input.setAttribute('placeholder', 'Project Leader Email');
   const removeBtn = document.createElement('button');
   removeBtn.classList.add('leader_btn', 'remove_leader_btn');
   removeBtn.setAttribute('type', 'button');

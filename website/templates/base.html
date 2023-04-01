@@ -31,7 +31,7 @@
       <ul>
         {% if user.is_authenticated %}
         <li><a href="/">Home</a></li>
-        <li><a href="/add_project">Add a project</a></li>
+        <li><a href="/add_project">Add Project</a></li>
         <li><a href="/logout">Logout</a></li>
         {% else %}
         <li><a href="/login">Login</a></li>
@@ -39,6 +39,7 @@
         {% endif %}
       </ul>
     </nav>
+    {% block messages%}
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
@@ -60,6 +61,7 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
+    {% endblock %}
     <main>{% block main %} {% endblock %}</main>
     <footer class="mb-5 small text-center text-muted"></footer>
     <script
@@ -68,6 +70,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../static/JavaScript/script.js"></script>
+    <script src="../static/js/script.js"></script>
   </body>
 </html>
