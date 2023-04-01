@@ -60,12 +60,12 @@ def details(id):
         project_description = project.description
 
         if collaborators:
-            collaborator_names = ', '.join([l.first_name for l in users])
+            collaborator_names = ', '.join([user.first_name + ' ' + user.last_name for user in users])
         else:
             collaborator_names = ''
 
         if leaders:
-            leader_names = ', '.join([l.first_name for l in users])
+            leader_names = ', '.join([user.first_name + ' ' + user.last_name for user in users])
         else:
             leader_names = ''
          
