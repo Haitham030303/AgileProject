@@ -138,6 +138,7 @@ def add_project():
 @views.route('/dashboard')
 @login_required
 def dashboard():
-    pass
+    user = User.query.filter_by(email=current_user.email).first()
 
+    flash(f'Welcome {user.first_name}!')
     return render_template('dashboard.html', user=current_user)
