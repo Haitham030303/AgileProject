@@ -134,3 +134,10 @@ def add_project():
         
     return render_template('add_project.html', user=current_user)
 
+
+@views.route('/dashboard')
+@login_required
+def dashboard():
+    pass
+
+    return render_template('dashboard.html', user=current_user)
