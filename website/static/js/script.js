@@ -19,6 +19,18 @@ window.onload = function() {
         });
       });
       
+      //   show more option 
+      const showMoreBtn = document.querySelector('.show-more-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      showMoreBtn.addEventListener('click', () => {
+          projectCards.forEach(card => {
+              card.classList.remove('hidden');
+          });
+          showMoreBtn.style.display = 'none';
+      });
+
+      
       // add button
       const addBtn = document.querySelector('.add_leader_btn');
       addBtn.addEventListener('click', (e) => {
@@ -47,16 +59,9 @@ window.onload = function() {
       });
       
       
-      // show more option 
-      const showMoreBtn = document.querySelector('.show-more-btn');
-      const projectCards = document.querySelectorAll('.project-card');
-      
-      showMoreBtn.addEventListener('click', (e) => {
-          projectCards.forEach(card => {
-              card.classList.remove('hidden');
-          });
-          showMoreBtn.style.display = 'none';
-      });
+    
+
+
   };
 
 
