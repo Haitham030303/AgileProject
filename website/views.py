@@ -142,3 +142,8 @@ def dashboard():
 
     flash(f'Welcome {user.first_name}!')
     return render_template('dashboard.html', user=current_user)
+
+@views.route('/profile/myaccount')
+@login_required
+def account():
+    return render_template('account.html', user=current_user)
