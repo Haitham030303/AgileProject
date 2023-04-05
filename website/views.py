@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from website.models import Project, User, Leader, Collaborator
 from . import db 
+from flask import redirect, url_for
 import re
 
 views = Blueprint("views_bp", __name__)
@@ -35,8 +36,10 @@ def index():
 
             if collaborator_entry:
                 user_id = collaborator_entry.user_id
-                user_name = User.query.filter_by(id=user_id).first().name
-                entry['user_name'] = user_name
+                collaborator_first_name = User.query.filter_by(id=user_id).first().first_name
+                collaborator_last_name = User.query.filter_by(id=user_id).first().last_name
+                collaborator_name = collaborator_first_name + ' ' + collaborator_last_name
+                entry['collaborator_name'] = collaborator_name
             entry['leader_names'] = leader_names
             entries.append(entry)
 
@@ -83,6 +86,22 @@ def details(id):
     return render_template('detail.html', user=current_user)
 
 
+@views.route('/add_collaborator/<int:id>')
+@login_required
+def add_collaborator(id):
+    collaborators = Collaborator.query.filter_by(project_id=id).all()
+    if collaborators:
+        for collaborator in collaborators:
+            Already_a_collaborator = collaborator.query.filter_by(user_id=current_user.id).first()
+            if Already_a_collaborator:
+                flash('You are already a collaborator in this project', category='error')
+                return redirect(url_for('views_bp.index'))
+    
+    new_project = Collaborator(project_id = id, user_id = current_user.id)
+    db.session.add(new_project)
+    db.session.commit()
+    flash('You are now a collaborator in this project.', category='success')
+    return redirect(url_for('views_bp.index'))
 
 
 
@@ -134,3 +153,28 @@ def add_project():
         
     return render_template('add_project.html', user=current_user)
 
+
+@views.route('/dashboard')
+@login_required
+def dashboard():
+    user = User.query.filter_by(email=current_user.email).first()
+    leaders = Leader.query.filter_by(user_id=user.id).all() #grabbing all the leader's project
+    entries = []
+    for leader in leaders:
+        projects = Project.query.filter_by(id=leader.project_id).all()
+        if projects:
+            for project in projects:
+                entry = {}
+                entry['title'] = project.title
+                entry['description'] = project.description
+                entry['status'] = project.status
+                entry['id'] = project.id
+                entries.append(entry)
+
+    flash(f'Welcome {user.first_name}!')
+    return render_template('dashboard.html', user=current_user, entries=entries)
+
+@views.route('/profile/myaccount')
+@login_required
+def account():
+    return render_template('account.html', user=current_user)

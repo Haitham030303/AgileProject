@@ -82,3 +82,5 @@ def logout():
 @auth.route('/reset_password')
 def reset_password():
     return render_template('reset_request.html', title='Reset Request')
+
+#dashbord
