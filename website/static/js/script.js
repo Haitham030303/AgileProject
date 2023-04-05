@@ -15,21 +15,11 @@ window.onload = function() {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           const inputContainer = e.target.parentNode;
+                  
           inputContainer.parentNode.removeChild(inputContainer);
         });
       });
       
-      //   show more option 
-      const showMoreBtn = document.querySelector('.show-more-btn');
-      const projectCards = document.querySelectorAll('.project-card');
-      
-      showMoreBtn.addEventListener('click', () => {
-          projectCards.forEach(card => {
-              card.classList.remove('hidden');
-          });
-          showMoreBtn.style.display = 'none';
-      });
-
       
       // add button
       const addBtn = document.querySelector('.add_leader_btn');
@@ -57,11 +47,23 @@ window.onload = function() {
         inputContainer.appendChild(removeBtn);
         addBtn.parentNode.insertBefore(inputContainer, addBtn);
       });
-      
-      
-    
 
+      //   show more option 
+      const showMoreBtn = document.querySelector('.show-more-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      showMoreBtn.addEventListener('click', () => {
+          projectCards.forEach(card => {
+            card.classList.remove('hidden');
+          });
+          showMoreBtn.style.display = 'none';
+        });
+
+        
+        
+        
 
   };
+  
 
-
+  
