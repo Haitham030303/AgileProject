@@ -21,7 +21,7 @@
     </div>  
     {% if entry.user_name %}
     <div class="Project-collaborators">
-        Project Collaborators: {{ entry.user_name }}
+        Project Collaborators: {{ entry.collaborator_name }}
     </div>
     {% endif %}
     <div class="Description">
@@ -29,7 +29,7 @@
     </div>
     <div class="card-footer">
         <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-        <button class="homebtn btn-outline">Join</button>
+        <a href="{{ url_for('views_bp.add_collaborator', id=entry.id) }}"><button class="homebtn btn-outline">Join</button></a>
     </div>
 </div>
 {% endfor %}

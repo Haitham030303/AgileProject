@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from website.models import Project, User, Leader, Collaborator
 from . import db 
+from flask import redirect, url_for
 import re
 
 views = Blueprint("views_bp", __name__)
@@ -35,8 +36,10 @@ def index():
 
             if collaborator_entry:
                 user_id = collaborator_entry.user_id
-                user_name = User.query.filter_by(id=user_id).first().name
-                entry['user_name'] = user_name
+                collaborator_first_name = User.query.filter_by(id=user_id).first().first_name
+                collaborator_last_name = User.query.filter_by(id=user_id).first().last_name
+                collaborator_name = collaborator_first_name + ' ' + collaborator_last_name
+                entry['collaborator_name'] = collaborator_name
             entry['leader_names'] = leader_names
             entries.append(entry)
 
@@ -88,13 +91,18 @@ def details(id):
 def add_collaborator(id):
     collaborators = Collaborator.query.filter_by(project_id=id).all()
     if collaborators:
-        Already_a_collaborator = collaborators.query.filter_by(id=current_user.id).first()
-        if Already_a_collaborator:
-            flash('You are already a collaborator in this project', category='error')
-            return render_template('index.html', user=current_user)
+        for collaborator in collaborators:
+            Already_a_collaborator = collaborator.query.filter_by(user_id=current_user.id).first()
+            if Already_a_collaborator:
+                flash('You are already a collaborator in this project', category='error')
+                return redirect(url_for('views_bp.index'))
     
     new_project = Collaborator(project_id = id, user_id = current_user.id)
     db.session.add(new_project)
+    db.session.commit()
+    flash('You are now a collaborator in this project.', category='success')
+    return redirect(url_for('views_bp.index'))
+
 
 
 @views.route('/add_project', methods=["POST", "GET"])
