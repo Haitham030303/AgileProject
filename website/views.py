@@ -83,7 +83,18 @@ def details(id):
     return render_template('detail.html', user=current_user)
 
 
-
+@views.route('/add_collaborator/<int:id>')
+@login_required
+def add_collaborator(id):
+    collaborators = Collaborator.query.filter_by(project_id=id).all()
+    if collaborators:
+        Already_a_collaborator = collaborators.query.filter_by(id=current_user.id).first()
+        if Already_a_collaborator:
+            flash('You are already a collaborator in this project', category='error')
+            return render_template('index.html', user=current_user)
+    
+    new_project = Collaborator(project_id = id, user_id = current_user.id)
+    db.session.add(new_project)
 
 
 @views.route('/add_project', methods=["POST", "GET"])
