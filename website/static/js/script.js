@@ -1,39 +1,51 @@
 window.onload = function() {
-    $(document).ready(function() {   //close button alert
+    $(document).ready(function() { //close button alert
         $('.close').click(function() {
-          $(this).parent().fadeOut(120);
+            $(this).parent().fadeOut(120);
         });
-      });
-      
-      
-      // remove button
-      const removeBtns = document.querySelectorAll('.remove_leader_btn');
-      if (removeBtns.length === 1) {
-        removeBtns[0].setAttribute("disabled", true);
-      }
-      removeBtns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const inputContainer = e.target.parentNode;
-          inputContainer.parentNode.removeChild(inputContainer);
-        });
-      });
-      
-      //   show more option 
-      const showMoreBtn = document.querySelector('.show-more-btn');
-      const projectCards = document.querySelectorAll('.project-card');
-      
-      showMoreBtn.addEventListener('click', () => {
-          projectCards.forEach(card => {
-              card.classList.remove('hidden');
-          });
-          showMoreBtn.style.display = 'none';
-      });
+    });
 
-      
-      // add button
-      const addBtn = document.querySelector('.add_leader_btn');
-      addBtn.addEventListener('click', (e) => {
+
+    // remove button
+    const removeBtns = document.querySelectorAll('.remove_leader_btn');
+    if (removeBtns.length === 1) {
+        removeBtns[0].setAttribute("disabled", true);
+    }
+    removeBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const inputContainer = e.target.parentNode;
+            inputContainer.parentNode.removeChild(inputContainer);
+        });
+    });
+
+    //   show more option 
+    const showMoreBtn = document.querySelector('.show-more-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    showMoreBtn.addEventListener('click', () => {
+        projectCards.forEach(card => {
+            card.classList.remove('hidden');
+        });
+        showMoreBtn.style.display = 'none';
+        showLessBtn.style.display = 'block';
+    });
+
+    //   show less option
+    const projectCardHidden = document.querySelectorAll('.project-card-hidden');
+    const showLessBtn = document.querySelector('.show-less-btn');
+    showLessBtn.addEventListener('click', () => {
+        projectCardHidden.forEach(card => {
+            card.classList.add('hidden');
+        });
+        showLessBtn.style.display = 'none';
+        showMoreBtn.style.display = 'block';
+    });
+
+
+    // add button
+    const addBtn = document.querySelector('.add_leader_btn');
+    addBtn.addEventListener('click', (e) => {
         e.preventDefault();
         const inputContainer = document.createElement('div');
         inputContainer.classList.add('project_leader_inputs');
@@ -50,18 +62,16 @@ window.onload = function() {
         removeBtn.setAttribute('type', 'button');
         removeBtn.innerHTML = '<i class="far fa-times-circle"></i>';
         removeBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          inputContainer.parentNode.removeChild(inputContainer);
+            e.preventDefault();
+            inputContainer.parentNode.removeChild(inputContainer);
         });
         inputContainer.appendChild(input);
         inputContainer.appendChild(removeBtn);
         addBtn.parentNode.insertBefore(inputContainer, addBtn);
-      });
-      
-      
-    
+    });
 
 
-  };
 
 
+
+};

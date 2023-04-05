@@ -34,7 +34,7 @@
             </div>
         {% else %}
         
-        <div class="project-card hidden">
+        <div class="project-card hidden project-card-hidden">
             <div class="title-grid">
                 <div class="P-Title">{{ entry.title }}</div>
                 <div class="status">Status: {{entry.status}}</div>
@@ -58,6 +58,9 @@
                 <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
                 <button class="homebtn btn-outline">Join</button>
             </div>
+        <div class="card-footer">
+        <button class="homebtn btn-outline show-less-btn">Show less</button>
+    </div> 
         </div>
         {% endif %}
     {% endfor %}   
