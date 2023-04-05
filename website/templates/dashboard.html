@@ -1,13 +1,78 @@
 {% extends "base.html" %} {% block title %} dashboard {% endblock %} {% block main%}
 
-<div class="card">
+
+
+<div class="card"> 
     <div class="title-grid">
         <div class="P-Title">Project Portfolio</div>
-        <div class="status"></div>
     </div>
+    {% for entry in entries %}
+        {% if loop.index <= 2 %}
+            <div class="card project-card">
+                <div class="title-grid">
+                    <div class="P-Title">{{ entry.title }}</div>
+                    <div class="status">Status: {{entry.status}}</div>
+                </div>
+                <div class="P-owner">
+                    {% if entry.leader_names|length == 1 %}
+                        Project Leader: {{ entry.leader_names[0] }}
+                    {% elif entry.leader_names|length > 1 %}
+                        Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
+                    {% endif %}
+                </div>  
+                {% if entry.user_name %}
+                <div class="Project-collaborators">
+                    Project Collaborators: {{ entry.user_name }}
+                </div>
+                {% endif %}
+                <div class="Description">
+                    {{ entry.description }}
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
+                    <button class="homebtn btn-outline">Join</button>
+                </div>
+            </div>
+        {% else %}
+        <div class="card project-card hidden">
+            <div class="title-grid">
+                <div class="P-Title">{{ entry.title }}</div>
+                <div class="status">Status: {{entry.status}}</div>
+            </div>
+            <div class="P-owner">
+                {% if entry.leader_names|length == 1 %}
+                    Project Leader: {{ entry.leader_names[0] }}
+                {% elif entry.leader_names|length > 1 %}
+                    Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
+                {% endif %}
+            </div>  
+            {% if entry.user_name %}
+            <div class="Project-collaborators">
+                Project Collaborators: {{ entry.user_name }}
+            </div>
+            {% endif %}
+            <div class="Description">
+                {{ entry.description }}
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
+                <button class="homebtn btn-outline">Join</button>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}   
     <div class="card-footer">
-        <button class="homebtn btn-outline">Details</button>
+        <button class="homebtn btn-outline show-more-btn">Show more</button>
+    </div> 
+</div>
+
+<div class="card">
+    <div class="title-grid">
+        <div class="P-Title">Collaborative efforts</div>
     </div>
 </div>
+
 {% endblock %}
+
+
 {% set active = 'dashboard' %}

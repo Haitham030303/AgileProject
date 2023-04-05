@@ -433,3 +433,7 @@ nav li {
     background-color: #ff5555;
     display: block;
 }
+
+.hidden {
+    display: none;
+}
