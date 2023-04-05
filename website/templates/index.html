@@ -19,11 +19,13 @@
             Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
         {% endif %}
     </div>  
-    {% if entry.user_name %}
     <div class="Project-collaborators">
-        Project Collaborators: {{ entry.collaborator_name }}
-    </div>
-    {% endif %}
+        {% if entry.collaborator_names|length == 1 %}
+            Project Collaborator: {{ entry.collaborator_names[0] }}
+        {% elif  entry.collaborator_names|length > 1 %}
+            Project Leaders: {{  entry.collaborator_names[0] }}, {{  entry.collaborator_names[1] }}, ...
+        {% endif %}
+     </div>
     <div class="Description">
         {{ entry.description }}
     </div>

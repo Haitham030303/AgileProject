@@ -23,8 +23,9 @@ def index():
             entry['status'] = project.status
             entry['id'] = project.id
             leader_names = []
+            collaborator_names = []
 
-            collaborator_entry = Collaborator.query.filter_by(project_id=project.id).first()
+            collaborator_entries = Collaborator.query.filter_by(project_id=project.id).all()
             leader_entries = Leader.query.filter_by(project_id=project.id).all()
 
             if leader_entries:
@@ -34,12 +35,14 @@ def index():
                     leader_name = leader_first_name + ' ' + leader_last_name
                     leader_names.append(leader_name)
 
-            if collaborator_entry:
-                user_id = collaborator_entry.user_id
-                collaborator_first_name = User.query.filter_by(id=user_id).first().first_name
-                collaborator_last_name = User.query.filter_by(id=user_id).first().last_name
-                collaborator_name = collaborator_first_name + ' ' + collaborator_last_name
-                entry['collaborator_name'] = collaborator_name
+            if collaborator_entries:
+                for collaborator_entry in collaborator_entries:
+                    user_id = collaborator_entry.user_id
+                    collaborator_first_name = User.query.filter_by(id=user_id).first().first_name
+                    collaborator_last_name = User.query.filter_by(id=user_id).first().last_name
+                    collaborator_name = collaborator_first_name + ' ' + collaborator_last_name
+                    collaborator_names.append(collaborator_name)
+            entry['collaborator_names'] = collaborator_names
             entry['leader_names'] = leader_names
             entries.append(entry)
 
