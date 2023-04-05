@@ -162,7 +162,9 @@ def add_project():
 def dashboard():
     user = User.query.filter_by(email=current_user.email).first()
     leaders = Leader.query.filter_by(user_id=user.id).all() #grabbing all the leader's project
+    collaborators = Collaborator.query.filter_by(user_id=user.id).all() #grabbing all the leader's project 
     entries = []
+    collaborator_entries = []
     for leader in leaders:
         projects = Project.query.filter_by(id=leader.project_id).all()
         if projects:
@@ -173,9 +175,20 @@ def dashboard():
                 entry['status'] = project.status
                 entry['id'] = project.id
                 entries.append(entry)
+                
+    for collaborator in collaborators:
+        projects = Project.query.filter_by(id=collaborator.project_id).all()
+        if projects:
+            for project in projects:
+                collaborator_entry = {}
+                collaborator_entry['title'] = project.title
+                collaborator_entry['description'] = project.description
+                collaborator_entry['status'] = project.status
+                collaborator_entry['id'] = project.id
+                collaborator_entries.append(collaborator_entry)
 
     flash(f'Welcome {user.first_name}!')
-    return render_template('dashboard.html', user=current_user, entries=entries)
+    return render_template('dashboard.html', user=current_user, entries=entries, collaborator_entries=collaborator_entries)
 
 @views.route('/profile/myaccount')
 @login_required
