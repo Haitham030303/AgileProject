@@ -57,7 +57,9 @@ def details(id):
     collaborators = Collaborator.query.filter_by(project_id=id).all()
     leaders = Leader.query.filter_by(project_id=id).all()
     leader_ids = [leader.user_id for leader in leaders]  # Extract the 'user_id' attribute for each Leader object
+    collaborator_ids = [collaborator.user_id for collaborator in collaborators]
     users = User.query.filter(User.id.in_(leader_ids)).all()
+    collaborator_for_project =  User.query.filter(User.id.in_(collaborator_ids)).all()
 
     if project:
         project_title = project.title
@@ -66,7 +68,7 @@ def details(id):
         project_description = project.description
 
         if collaborators:
-            collaborator_names = ', '.join([user.first_name + ' ' + user.last_name for user in users])
+            collaborator_names = ', '.join([user.first_name + ' ' + user.last_name for user in collaborator_for_project])
         else:
             collaborator_names = ''
 
