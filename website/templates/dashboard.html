@@ -58,12 +58,13 @@
     
             </div>
         <div class="card-footer">
-        <button class="homebtn btn-outline show-less-btn">Show less</button>
-    </div> 
+            <button class="homebtn btn-outline show-less-btn">Show less</button>
+        </div> 
         </div>
         {% endif %}
     {% endfor %}   
     <div class="card-footer">
+        <button class="homebtn hidden btn-outline show-less-btn">Show less</button>
         <button class="homebtn btn-outline show-more-btn">Show more</button>
     </div> 
 </div>
@@ -74,7 +75,7 @@
     </div>
     {% for collaborator_entry in collaborator_entries %}
         {% if loop.index <= 1 %}
-            <div class="project-card">
+            <div class="collab-card">
                 <div class="title-grid">
                     <div class="P-Title">{{ collaborator_entry.title }}</div>
                     <div class="status">Status: {{collaborator_entry.status}}</div>
@@ -100,8 +101,7 @@
                 </div>
             </div>
         {% else %}
-        
-        <div class="project-card hidden project-card-hidden">
+        <div class="collab-card hidden collab-card-hidden">
             <div class="title-grid">
                 <div class="P-Title">{{ collaborator_entry.title }}</div>
                 <div class="status">Status: {{collaborator_entry.status}}</div>
@@ -125,14 +125,13 @@
                 <a href="{{ url_for('views_bp.details', id=collaborator_entry.id) }}"><button class="homebtn">Details</button></a>
                 
             </div>
-        <div class="card-footer">
-        <button class="homebtn btn-outline show-less-btn">Show less</button>
-    </div> 
+        
         </div>
         {% endif %}
-    {% endfor %}   
+    {% endfor %}  
     <div class="card-footer">
-        <button class="homebtn btn-outline show-more-btn">Show more</button>
+        <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
+        <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
     </div> 
 </div>
 

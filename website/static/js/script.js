@@ -42,6 +42,30 @@ window.onload = function() {
         showMoreBtn.style.display = 'block';
     });
 
+    //   show more option collab
+    const showMoreBtnCollab = document.querySelector('.show-more-btn-collab');
+    const collabCards = document.querySelectorAll('.collab-card');
+
+
+    showMoreBtnCollab.addEventListener('click', () => {
+        collabCards.forEach(card => {
+            card.classList.remove('hidden');
+        });
+        showMoreBtnCollab.style.display = 'none';
+        showLessBtnCollab.style.display = 'block';
+    });
+
+    //   show less option collab
+    const showLessBtnCollab = document.querySelector('.show-less-btn-collab');
+    const collabCardHidden = document.querySelectorAll('.collab-card-hidden');
+
+    showLessBtnCollab.addEventListener('click', () => {
+        collabCardHidden.forEach(card => {
+            card.classList.add('hidden');
+        });
+        showLessBtnCollab.style.display = 'none';
+        showMoreBtnCollab.style.display = 'block';
+    });
 
     // add button
     const addBtn = document.querySelector('.add_leader_btn');
