@@ -95,14 +95,16 @@ def details(id):
 @login_required
 def add_collaborator(id):
     collaborators = Collaborator.query.filter_by(project_id=id).all()
-    if collaborators:
-        for collaborator in collaborators:
-            Already_a_collaborator = collaborator.query.filter_by(user_id=current_user.id).first()
-            if Already_a_collaborator:
-                flash('You are already a collaborator in this project', category='error')
-                return redirect(url_for('views_bp.index'))
-    
-    new_project = Collaborator(project_id = id, user_id = current_user.id)
+    Already_a_collaborator = False
+    for collaborator in collaborators:
+        if collaborator.user_id == current_user.id:
+            Already_a_collaborator = True
+            break
+    if Already_a_collaborator:
+        flash('You are already a collaborator in this project', category='error')
+        return redirect(url_for('views_bp.index'))
+  
+    new_project = Collaborator(project_id=id, user_id=current_user.id)
     db.session.add(new_project)
     db.session.commit()
     flash('You are now a collaborator in this project.', category='success')
