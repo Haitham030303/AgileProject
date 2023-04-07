@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from website.models import Project, User, Leader, Collaborator
+from werkzeug.security import generate_password_hash, check_password_hash
 from . import db 
 from flask import redirect, url_for
 import re
@@ -169,7 +170,7 @@ def add_project():
     return render_template('add_project.html', user=current_user)
 
 
-@views.route('/dashboard')
+@views.route('/profile/dashboard')
 @login_required
 def dashboard():
     user = User.query.filter_by(email=current_user.email).first()
@@ -206,3 +207,33 @@ def dashboard():
 @login_required
 def account():
     return render_template('account.html', user=current_user)
+
+@views.route('/profile/change_password', methods=["POST", "GET"])
+@login_required
+def change_password():
+    if request.method == "POST":
+        old_password = request.form.get('old_password')
+        new_password1 = request.form.get('new_password1')
+        new_password2 = request.form.get('new_password2')
+        if not check_password_hash(current_user.hash, old_password):
+            flash("Incorrect password", category="error")
+        elif new_password1 != new_password2:
+            flash("Password doesn't match", category="error")
+        elif old_password == new_password1:
+            flash("Newa password shoouldn;t be the same with current ..", category="error")
+        elif len(new_password1) < 8:
+            flash('Password length must be at least 8 characters!', category='error')
+        elif new_password1.islower():  # No uppercase letter
+            flash('Password must contain at least one uppercase character!', category='error')
+        elif new_password1.isupper():  # No lowercase letter
+            flash('Password must contain at least one lowercase character', category='error')
+        elif not special_chars.search(new_password1):
+            flash('Password must contain at least one special character!', category='error')
+        elif not re.search('\d', new_password1):
+            flash('Password must contain at least one number!', category='error')
+        else: 
+            #TODO: update password in db
+            flash("Password changrd succesfully", category="success")
+            logout_user()
+            return redirect("/login")           
+    return render_template('change_password.html', user=current_user)
