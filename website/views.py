@@ -235,5 +235,5 @@ def change_password():
             #TODO: update password in db
             flash("Password changrd succesfully", category="success")
             logout_user()
-            return redirect("/login")           
+            return redirect("/login")        
     return render_template('change_password.html', user=current_user)
