@@ -1,4 +1,12 @@
 {% extends "base.html" %} {% block title %} My Account {% endblock %} 
 {% block main %}
     <h1>Welcome, {{ user.first_name }} </h1>
+    <h2>User Information</h2>
+    <h3>Full Name</h3>
+    {{ user.first_name + ' ' + user.last_name }}
+    <h3>Email Address</h3>
+    {{ user.email }}
+    <h3>Password</h3>
+    ********
+    <a href="/profile/change_password"><button>Change Password</button></a>
 {% endblock %}
