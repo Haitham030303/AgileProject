@@ -216,11 +216,11 @@ def change_password():
         new_password1 = request.form.get('new_password1')
         new_password2 = request.form.get('new_password2')
         if not check_password_hash(current_user.hash, old_password):
-            flash("Incorrect password", category="error")
+            flash("Incorrect password!", category="error")
         elif new_password1 != new_password2:
-            flash("Password doesn't match", category="error")
+            flash("New passwords should match!", category="error")
         elif old_password == new_password1:
-            flash("Newa password shoouldn;t be the same with current ..", category="error")
+            flash("New password should be different from current password!", category="error")
         elif len(new_password1) < 8:
             flash('Password length must be at least 8 characters!', category='error')
         elif new_password1.islower():  # No uppercase letter
@@ -233,7 +233,7 @@ def change_password():
             flash('Password must contain at least one number!', category='error')
         else: 
             #TODO: update password in db
-            flash("Password changrd succesfully", category="success")
+            flash("Password changed succesfully", category="success")
             logout_user()
-            return redirect("/login")        
+            return redirect("/login")
     return render_template('change_password.html', user=current_user)
