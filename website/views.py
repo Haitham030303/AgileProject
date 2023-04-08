@@ -232,7 +232,8 @@ def change_password():
         elif not re.search('\d', new_password1):
             flash('Password must contain at least one number!', category='error')
         else: 
-            #TODO: update password in db
+            current_user.hash = generate_password_hash(new_password1, method='sha256')
+            db.session.commit()
             flash("Password changed succesfully", category="success")
             logout_user()
             return redirect("/login")
