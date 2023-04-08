@@ -54,6 +54,7 @@
                 disabled
             />
         </div>
+          <a href="/profile/edit_profile"><button class="hidden" type="submit" id="saveButton">Save</button></a>
         <div class="form-group mb-3"><a href="/profile/change_password">
             <button class="btn">Change Password</button></a>
         </div>
@@ -81,5 +82,14 @@
             email.disabled = false;
             email.select();
         }
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keyup', event => {
+                if (event.keyCode === 13) {
+                // Pressing Enter while editing a field submits the form
+                event.preventDefault();
+                document.getElementById('saveButton').click();
+                }
+            });
+        });
     </script>
 {% endblock %}

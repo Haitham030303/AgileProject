@@ -238,3 +238,9 @@ def change_password():
             logout_user()
             return redirect("/login")
     return render_template('change_password.html', user=current_user)
+
+@views.route('/profile/edit_profile')
+@login_required
+def edit_profile():
+    
+    return "<h1>Profile Updated!</h1>"
