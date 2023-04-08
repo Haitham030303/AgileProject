@@ -239,8 +239,27 @@ def change_password():
             return redirect("/login")
     return render_template('change_password.html', user=current_user)
 
-@views.route('/profile/edit_profile')
+@views.route('/profile/edit_profile', methods=["POST"])
 @login_required
 def edit_profile():
-    
-    return "<h1>Profile Updated!</h1>"
+    if request.method == "POST":
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+        # Check some complexity requirements
+        if user and user != current_user:
+            flash('A user with this email already exists!', category='error')
+        elif first_name and len(first_name) < 2:
+            flash('First Name must be at least 2 characters!', category='error')
+        elif last_name and len(last_name) < 2:
+            flash('Last Name must be at least 2 characters!', category='error')
+        elif email and len(email) < 5:
+            flash('Email must be at least 5 characters!', category='error')
+        else:   
+            current_user.first_name = first_name or current_user.first_name
+            current_user.last_name = last_name or current_user.last_name
+            current_user.email = email or current_user.email
+            flash('Profile updated successfully!')
+            db.session.commit()
+    return redirect("/profile/myaccount")    
