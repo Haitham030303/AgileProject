@@ -103,4 +103,12 @@ window.onload = () => {
             showMoreBtnCollab.style.display = 'block';
         });
     }
+
+    function editFields() {
+        // Enable all form fields
+        document.querySelectorAll('input').forEach(input => input.disabled = false);
+        
+        // Show the Save button
+        // document.getElementById('saveButton').style.display = 'block';
+    }
 };

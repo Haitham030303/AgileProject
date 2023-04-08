@@ -5,7 +5,9 @@
         <h2>User Information</h2>
         <div class="mb-3 form-group">
             <input
+                autofocus
                 class="form-control mx-auto w-auto"
+                id="first_name"
                 type="text"
                 minlength="5"
                 maxlength="255"
@@ -13,10 +15,12 @@
                 placeholder="{{ user.first_name }}"
                 disabled
             />
+            <a href="#" onclick="editFirstName()">Edit</a>
         </div>
         <div class="mb-3 form-group">
             <input
                 class="form-control mx-auto w-auto"
+                id="last_name"
                 type="text"
                 minlength="5"
                 maxlength="255"
@@ -24,10 +28,12 @@
                 placeholder="{{ user.last_name }}"
                 disabled
             />
+            <a href="#" onclick="editLastName()">Edit</a>
         </div>
         <div class="mb-3 form-group">
             <input
                 class="form-control mx-auto w-auto"
+                id="email"
                 type="email"
                 minlength="5"
                 maxlength="255"
@@ -35,6 +41,7 @@
                 placeholder="{{ user.email }}"
                 disabled
             />
+            <a href="#" onclick="editEmail()">Edit</a>
         </div>
         <div class="mb-3 form-group">
             <input
@@ -52,4 +59,27 @@
         </div>
     </div> 
     
+
+    <script>
+        function editFirstName() {
+            // Enable all form fields
+            const first_name = document.getElementById('first_name');
+            first_name.disabled = false;
+            first_name.select();
+            first_name.setSelectionRange(first_name.value.length, first_name.value.length);
+        }
+        function editLastName() {
+            // Enable all form fields
+            const last_name = document.getElementById('last_name');
+            last_name.disabled = false;
+            last_name.select();
+            last_name.setSelectionRange(last_name.value.length, last_name.value.length);
+        }
+        function editEmail() {
+            // Enable all form fields
+            const email = document.getElementById('email');
+            email.disabled = false;
+            email.select();
+        }
+    </script>
 {% endblock %}
