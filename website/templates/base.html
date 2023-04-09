@@ -27,15 +27,22 @@
   </head>
 
   <body>
-    <nav>
-      <a class="logo" href="#">Project Hive</a>
-      <ul>
+    <nav class="nav">
+      <a class="logo" href="/"">Project Hive</a>
+      <ul class="list">
         {% if user.is_authenticated %}
-        <li><a href="/">Home</a></li>
         <li><a href="/add_project">Add Project</a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/profile/dashboard">Dashboard</a></li>
-        <li><a href="/profile/myaccount">My Account</a></li>
+        <li class="dropdown">
+          <img class="gravatar" src="https://s.gravatar.com/avatar/353ffe54135685e371ae6add43986f92?d=mm" alt="naol.bullo@outlook.com">
+          <div class="dropdown-content">
+            <a href="/profile/myaccount">My Account</a>
+            <a href="/profile/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+          </div>
+        </li>
+        <!-- <li><a href="/logout">Logout</a></li>
+        <li><a href="/profile/dashboard">Dashboard</a></li> -->
+        <!-- <li><a href="/profile/myaccount">My Account</a></li> -->
         {% else %}
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
