@@ -293,12 +293,14 @@ nav li {
     nav ul {
         display: none;
     }
+
     .menu-toggle {
         display: block;
         cursor: pointer;
         color: #fff;
         font-size: 24px;
     }
+
     .menu-toggle:hover+ul,
     nav ul:hover {
         display: flex;
@@ -310,9 +312,11 @@ nav li {
         width: 100%;
         padding: 10px 0;
     }
+
     .menu-toggle:hover+ul {
         margin-top: 0;
     }
+
     nav li {
         margin: 10px 0;
     }
@@ -504,4 +508,64 @@ nav li {
 .portfolio {
     font-size: 1.4rem;
     border-bottom: #0b9c19;
+}
+
+/* Modal Box (Are youu sure? pop up box)*/
+.modal-box {
+    max-width: 380px;
+    width: 100%;
+    border-radius: 24px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    display: none;
+    /* hide the modal box by default */
+    z-index: 9999;
+    /* make sure the modal box appears on top of other elements */
+}
+
+
+.modal-box img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 70px;
+    color: #4070f4;
+}
+
+.modal-box h2 {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-box h3 {
+    margin-top: 16px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+}
+
+.modal-box button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box button:hover {
+    background-color: rgb(9, 58, 75);
 }

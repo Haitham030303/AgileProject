@@ -1,5 +1,5 @@
 {% extends "base.html" %}
- 
+
 {% block title %}
     Home 
 {% endblock %}
@@ -33,9 +33,43 @@
     </div>
     <div class="card-footer">
         <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-        <a href="{{ url_for('views_bp.add_collaborator', id=entry.id) }}"><button class="homebtn btn-outline">Join</button></a>
+        <a href="{{ url_for('views_bp.add_collaborator', id=entry.id, is_collaborator=entry.is_collaborator) }}">
+            <button class="homebtn btn-outline join-btn">Join</button>
+        </a>
+        </div>     
+    <div class="modal-box" id="popup">
+        <img src="../static/pictures/checkmark.png"></img>
+        <h2>Completed!</h2>
+        <h3>You have sucessfully joined the project.</h3>
+
+        <button type="button">OK</button>
     </div>
 </div>
-{% endfor %}
-{% endblock %}
+  
+<script>
+    // Find all "Join" button elements
+    const joinButtons = document.querySelectorAll(".join-btn");
 
+    // Loop through all "Join" buttons and add a "click" event listener to each of them
+    joinButtons.forEach(function(joinButton) {
+        joinButton.addEventListener("click", function(event) {
+            event.preventDefault(); // prevent the default behavior of the link
+
+            // Show the modal pop up box
+            const modalBox = document.querySelector(".modal-box");
+            modalBox.style.display = "block";
+
+            // Add an event listener to the "OK" button to hide the modal pop up box when clicked
+            const okButton = modalBox.querySelector("button");
+            okButton.addEventListener("click", function() {
+                modalBox.style.display = "none";
+            });
+        });
+    });
+</script>
+
+
+{% endfor %}
+
+
+{% endblock %}
