@@ -523,6 +523,7 @@ nav li {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 30px 20px;
     display: none;
+    position: fixed;
     /* hide the modal box by default */
     z-index: 9999;
     /* make sure the modal box appears on top of other elements */

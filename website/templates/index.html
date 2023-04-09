@@ -45,7 +45,8 @@
         <button type="button">OK</button>
     </div>
 </div>
-  
+{% endfor %}
+
 <script>
     // Find all "Join" button elements
     const joinButtons = document.querySelectorAll(".join-btn");
@@ -67,9 +68,5 @@
         });
     });
 </script>
-
-
-{% endfor %}
-
 
 {% endblock %}
