@@ -1,11 +1,11 @@
 window.onload = () => {
-    $(document).ready(function() { //close button alert
-        $('.close').click(function() {
+    $(document).ready(function () { //close button alert
+        $('.close').click(function () {
             $(this).parent().fadeOut(120);
         });
     });
-    
-    
+
+
     // remove button
     const removeBtns = document.querySelectorAll('.remove_leader_btn');
     if (removeBtns.length === 1) {
@@ -18,7 +18,7 @@ window.onload = () => {
             inputContainer.parentNode.removeChild(inputContainer);
         });
     });
-    
+
     // add button
     const addBtn = document.querySelector('.add_leader_btn');
     if (addBtn) {
@@ -48,11 +48,11 @@ window.onload = () => {
         });
 
     }
-    
+
     //   show more option
     const showMoreBtn = document.querySelector('.show-more-btn');
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     if (showMoreBtn) {
         showMoreBtn.addEventListener('click', () => {
             projectCards.forEach(card => {
@@ -62,7 +62,7 @@ window.onload = () => {
             showLessBtn.style.display = 'block';
         });
     }
-    
+
     //   show less option
     const projectCardHidden = document.querySelectorAll('.project-card-hidden');
     const showLessBtn = document.querySelector('.show-less-btn');
@@ -75,11 +75,11 @@ window.onload = () => {
             showMoreBtn.style.display = 'block';
         });
     }
-        
+
     //   show more option collab
     const showMoreBtnCollab = document.querySelector('.show-more-btn-collab');
     const collabCards = document.querySelectorAll('.collab-card');
-    
+
     if (showMoreBtnCollab) {
         showMoreBtnCollab.addEventListener('click', () => {
             collabCards.forEach(card => {
@@ -89,11 +89,11 @@ window.onload = () => {
             showLessBtnCollab.style.display = 'block';
         });
     }
-    
+
     //   show less option collab
     const showLessBtnCollab = document.querySelector('.show-less-btn-collab');
     const collabCardHidden = document.querySelectorAll('.collab-card-hidden');
-    
+
     if (showLessBtnCollab) {
         showLessBtnCollab.addEventListener('click', () => {
             collabCardHidden.forEach(card => {
@@ -107,8 +107,10 @@ window.onload = () => {
     function editFields() {
         // Enable all form fields
         document.querySelectorAll('input').forEach(input => input.disabled = false);
-        
+
         // Show the Save button
         // document.getElementById('saveButton').style.display = 'block';
     }
+
+
 };

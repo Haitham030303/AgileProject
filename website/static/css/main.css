@@ -562,7 +562,7 @@ nav li {
 }
 
 .modal-box button {
-    width: 100%;
+    width: 100px;
     margin-top: 50px;
     padding: 10px 0;
     background: #6fd649;
@@ -573,6 +573,18 @@ nav li {
     border-radius: 4px;
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* Helps to the modal-buttons to fit properly */
+#join-cancel-btn {
+    order: 1;
+}
+
+#join-confirm-btn {
+    order: 2;
 }
 
 .modal-box button:hover {
@@ -619,9 +631,9 @@ nav li {
 }
 
 .dropdown-content a:hover {
-    color: white; 
+    color: white;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }

@@ -7,6 +7,11 @@
 {% block main %}
   
 {% for entry in entries %}
+<div class="modal-box" id="popup">
+    <h2>Are you sure you want to join?</h2>
+
+    <button type="button">Cancel</button>
+</div>
 <div class="card">
     <div class="title-grid">
         <div class="P-Title">{{ entry.title }}</div>
@@ -33,40 +38,42 @@
     </div>
     <div class="card-footer">
         <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-        <a href="{{ url_for('views_bp.add_collaborator', id=entry.id, is_collaborator=entry.is_collaborator) }}">
-            <button class="homebtn btn-outline join-btn">Join</button>
-        </a>
+        {% if not entry.is_collaborator and current_user.id not in entry.leader_ids %}
+        <button class="homebtn btn-outline join-btn" onclick="showJoinPopup({{ entry.id }})">Join</button>
+    {% endif %}
+    
         </div>     
-    <div class="modal-box" id="popup">
-        <img src="../static/pictures/checkmark.png"></img>
-        <h2>Completed!</h2>
-        <h3>You have sucessfully joined the project.</h3>
-
-        <button type="button">OK</button>
-    </div>
+        <div class="modal-box" id="join-popup">
+            <h2>Are you sure you want to join?</h2>
+            <button id="join-confirm-btn" type="button">Join</button>
+            <button id="join-cancel-btn" type="button">Cancel</button>
+        </div>
 </div>
+<script>
+    function showJoinPopup(projectId) {
+        const popup = document.getElementById("join-popup");
+        const confirmBtn = document.getElementById("join-confirm-btn");
+      
+        // Show the popup
+        popup.style.display = "block";
+      
+        // Set the click event for the confirm button
+        confirmBtn.onclick = function() {
+          // Redirect the user to the add_collaborator view
+          window.location.href = "/add_collaborator/" + projectId;
+        };
+        const cancelBtn = document.getElementById("join-cancel-btn");
+
+cancelBtn.onclick = function() {
+  // Hide the popup
+  const popup = document.getElementById("join-popup");
+  popup.style.display = "none";
+};
+
+      }
+      
+</script>
 {% endfor %}
 
-<script>
-    // Find all "Join" button elements
-    const joinButtons = document.querySelectorAll(".join-btn");
-
-    // Loop through all "Join" buttons and add a "click" event listener to each of them
-    joinButtons.forEach(function(joinButton) {
-        joinButton.addEventListener("click", function(event) {
-            event.preventDefault(); // prevent the default behavior of the link
-
-            // Show the modal pop up box
-            const modalBox = document.querySelector(".modal-box");
-            modalBox.style.display = "block";
-
-            // Add an event listener to the "OK" button to hide the modal pop up box when clicked
-            const okButton = modalBox.querySelector("button");
-            okButton.addEventListener("click", function() {
-                modalBox.style.display = "none";
-            });
-        });
-    });
-</script>
 
 {% endblock %}
