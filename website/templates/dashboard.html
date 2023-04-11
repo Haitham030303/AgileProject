@@ -4,59 +4,49 @@
 <div class="card"> 
     <div class="title-grid portfolio">
         <div class="P-Title">Project Portfolio</div>
-    </div>
+    </div>   
     {% for entry in entries %}
         {% if loop.index <= 1 %}
-            <div class="project-card">
-                <div class="title-grid">
-                    <div class="P-Title">{{ entry.title }}</div>
-                    <div class="status">Status: {{entry.status}}</div>
-                </div>
-                <div class="P-owner">
-                    {% if entry.leader_names|length == 1 %}
-                        Project Leader: {{ entry.leader_names[0] }}
-                    {% elif entry.leader_names|length > 1 %}
-                        Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
-                    {% endif %}
-                </div>  
-                {% if entry.user_name %}
-                <div class="Project-collaborators">
-                    Project Collaborators: {{ entry.user_name }}
-                </div>
-                {% endif %}
-                <div class="Description">
-                    {{ entry.description }}
-                </div>
-                <div class="card-footer">
-                    <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-                </div>
-            </div>
+        <div class="display-flex flex-column full-width align-self-center">
+            <div class="display-flex  justify-space-between">
+                <div class="
+                  display-flex flex-column full-width">
+            
+                <div class="display-flex flex-wrap align-items-center full-height">
+                    <span class="mr1 t-bold">
+                      <span aria-hidden="true"><!---->{{ entry.title }} <!----></span>
+                    </span>
+        <!----><!----><!---->        </div>
+                  <span class="t-14 t-normal t-black--light">
+                    <span aria-hidden="true"><!---->{{entry.start_date}} - Present <!----></span>
+                  </span>
+                  <span class="t-14 t-normal t-black--light">
+                    <span aria-hidden="true"><!---->Status: {{entry.status}}<!----></span>
+                  </span>
+          </div>
+        <div class="card-footer">
+            <button class="homebtn btn-outline show-less-btn">Show less</button>
+        </div> 
+        </div>
         {% else %}
         
-        <div class="project-card hidden project-card-hidden">
-            <div class="title-grid">
-                <div class="P-Title">{{ entry.title }}</div>
-                <div class="status">Status: {{entry.status}}</div>
-            </div>
-            <div class="P-owner">
-                {% if entry.leader_names|length == 1 %}
-                    Project Leader: {{ entry.leader_names[0] }}
-                {% elif entry.leader_names|length > 1 %}
-                    Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
-                {% endif %}
-            </div>  
-            {% if entry.user_name %}
-            <div class="Project-collaborators">
-                Project Collaborators: {{ entry.user_name }}
-            </div>
-            {% endif %}
-            <div class="Description">
-                {{ entry.description }}
-            </div>
-            <div class="card-footer">
-                <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-    
-            </div>
+        <div class="display-flex hidden project-card-hidden flex-column full-width align-self-center">
+            <div class="display-flex  justify-space-between">
+                <div class="
+                  display-flex flex-column full-width">
+            
+                <div class="display-flex flex-wrap align-items-center full-height">
+                    <span class="mr1 t-bold">
+                      <span aria-hidden="true"><!---->{{ entry.title }} <!----></span>
+                    </span>
+        <!----><!----><!---->        </div>
+                  <span class="t-14 t-normal t-black--light">
+                    <span aria-hidden="true"><!---->{{entry.start_date}} - Present <!----></span>
+                  </span>
+                  <span class="t-14 t-normal t-black--light">
+                    <span aria-hidden="true"><!---->Status: {{entry.status}}<!----></span>
+                  </span>
+          </div>
         <div class="card-footer">
             <button class="homebtn btn-outline show-less-btn">Show less</button>
         </div> 
@@ -68,7 +58,7 @@
         <button class="homebtn btn-outline show-more-btn">Show more</button>
     </div> 
 </div>
-
+<!-- 
 <div class="card">
     <div class="title-grid">
         <div class="P-Title">Collaborative efforts</div>
@@ -133,7 +123,7 @@
         <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
         <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
     </div> 
-</div>
+</div> -->
 
 
 

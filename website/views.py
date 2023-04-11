@@ -213,6 +213,7 @@ def dashboard():
                 entry["description"] = project.description
                 entry["status"] = project.status
                 entry["id"] = project.id
+                entry["start_date"] = project.start_date
                 entries.append(entry)
 
     for collaborator in collaborators:
@@ -224,6 +225,7 @@ def dashboard():
                 collaborator_entry["description"] = project.description
                 collaborator_entry["status"] = project.status
                 collaborator_entry["id"] = project.id
+                collaborator_entry["start_date"] = project.start_date
                 collaborator_entries.append(collaborator_entry)
 
     flash(f"Welcome {user.first_name}!")
