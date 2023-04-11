@@ -7,51 +7,43 @@
     </div>   
     {% for entry in entries %}
         {% if loop.index <= 1 %}
-        <div class="display-flex flex-column full-width align-self-center">
-            <div class="display-flex  justify-space-between">
-                <div class="
-                  display-flex flex-column full-width">
-            
-                <div class="display-flex flex-wrap align-items-center full-height">
-                    <span class="mr1 t-bold">
-                      <span aria-hidden="true"><!---->{{ entry.title }} <!----></span>
+            <div class=" flex-column full-width align-self-center display-flex project-card ">
+                <div class="display-flex  justify-space-between">
+                    <div class="display-flex flex-column full-width">
+                
+                    <div class="display-flex flex-wrap align-items-center full-height">
+                        <span class="mr1 t-bold">
+                        <span aria-hidden="true"><!---->{{ entry.title }} <!----></span>
+                        </span>
+                    </div>
+                    <span class="t-14 t-normal t-black--light">
+                        <span aria-hidden="true"><!---->{{entry.start_date}} - Present <!----></span>
                     </span>
-        <!----><!----><!---->        </div>
-                  <span class="t-14 t-normal t-black--light">
-                    <span aria-hidden="true"><!---->{{entry.start_date}} - Present <!----></span>
-                  </span>
-                  <span class="t-14 t-normal t-black--light">
-                    <span aria-hidden="true"><!---->Status: {{entry.status}}<!----></span>
-                  </span>
-          </div>
-        <div class="card-footer">
-            <button class="homebtn btn-outline show-less-btn">Show less</button>
-        </div> 
-        </div>
+                    <span class="t-14 t-normal t-black--light">
+                        <span aria-hidden="true"><!---->Status: {{entry.status}}<!----></span>
+                    </span>
+                </div>
+            </div>
+
         {% else %}
-        
-        <div class="display-flex hidden project-card-hidden flex-column full-width align-self-center">
-            <div class="display-flex  justify-space-between">
-                <div class="
-                  display-flex flex-column full-width">
+        <div class="display-flex project-card-hidden flex-column full-width align-self-center">
+            <div class="display-flex justify-space-between">
+                <div class="display-flex flex-column full-width">
             
                 <div class="display-flex flex-wrap align-items-center full-height">
                     <span class="mr1 t-bold">
-                      <span aria-hidden="true"><!---->{{ entry.title }} <!----></span>
+                    <span aria-hidden="true">{{ entry.title }}</span>
                     </span>
-        <!----><!----><!---->        </div>
-                  <span class="t-14 t-normal t-black--light">
-                    <span aria-hidden="true"><!---->{{entry.start_date}} - Present <!----></span>
-                  </span>
-                  <span class="t-14 t-normal t-black--light">
-                    <span aria-hidden="true"><!---->Status: {{entry.status}}<!----></span>
-                  </span>
-          </div>
-        <div class="card-footer">
-            <button class="homebtn btn-outline show-less-btn">Show less</button>
-        </div> 
+                </div>
+                <span class="t-14 t-normal t-black--light">
+                    <span aria-hidden="true">{{entry.start_date}} - Present </span>
+                </span>
+                <span class="t-14 t-normal t-black--light">
+                    <span aria-hidden="true">Status: {{entry.status}}</span>
+                </span>
+            </div>
         </div>
-        {% endif %}
+        {% endif %} 
     {% endfor %}   
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn">Show less</button>
@@ -124,9 +116,6 @@
         <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
     </div> 
 </div> -->
-
-
-
 
 
 
