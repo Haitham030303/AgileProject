@@ -7,40 +7,36 @@
     </div>   
     {% for entry in entries %}
         {% if loop.index <= 1 %}
-            <div class=" flex-column full-width align-self-center display-flex project-card ">
-                <div class="display-flex  justify-space-between">
-                    <div class="display-flex flex-column full-width">
-                
-                    <div class="display-flex flex-wrap align-items-center full-height">
-                        <span class="mr1 t-bold">
-                        <span aria-hidden="true"><!---->{{ entry.title }} <!----></span>
-                        </span>
-                    </div>
-                    <span class="t-14 t-normal t-black--light">
-                        <span aria-hidden="true"><!---->{{entry.start_date}} - Present <!----></span>
-                    </span>
-                    <span class="t-14 t-normal t-black--light">
-                        <span aria-hidden="true"><!---->Status: {{entry.status}}<!----></span>
-                    </span>
+        <div class="project-card">
+            <div class="justify-space-between project-history">
+              <div class="full-width project-card">
+                <div class="full-height">
+                  <span class="title">{{ entry.title }}</span>
                 </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}/{{entry.start_date.year}} - Present</span>
+                </span>
+                <span class="period">
+                  <span>Status: {{entry.status}}</span>
+                </span>
+              </div>
             </div>
-
+        </div>
+          
         {% else %}
-        <div class="display-flex project-card-hidden flex-column full-width align-self-center">
-            <div class="display-flex justify-space-between">
-                <div class="display-flex flex-column full-width">
-            
-                <div class="display-flex flex-wrap align-items-center full-height">
-                    <span class="mr1 t-bold">
-                    <span aria-hidden="true">{{ entry.title }}</span>
-                    </span>
+        <div class="project-card hidden project-card-hidden">
+            <div class="justify-space-between project-history">
+              <div class="full-width project-card">
+                <div class="full-height">
+                  <span class="title">{{ entry.title }}</span>
                 </div>
-                <span class="t-14 t-normal t-black--light">
-                    <span aria-hidden="true">{{entry.start_date}} - Present </span>
+                <span class="period">
+                  <span>{{entry.start_date.month}}/{{entry.start_date.year}} - Present</span>
                 </span>
-                <span class="t-14 t-normal t-black--light">
-                    <span aria-hidden="true">Status: {{entry.status}}</span>
+                <span class="period">
+                  <span>Status: {{entry.status}}</span>
                 </span>
+              </div>
             </div>
         </div>
         {% endif %} 
@@ -50,74 +46,9 @@
         <button class="homebtn btn-outline show-more-btn">Show more</button>
     </div> 
 </div>
-<!-- 
-<div class="card">
-    <div class="title-grid">
-        <div class="P-Title">Collaborative efforts</div>
-    </div>
-    {% for collaborator_entry in collaborator_entries %}
-        {% if loop.index <= 1 %}
-            <div class="collab-card">
-                <div class="title-grid">
-                    <div class="P-Title">{{ collaborator_entry.title }}</div>
-                    <div class="status">Status: {{collaborator_entry.status}}</div>
-                </div>
-                <div class="P-owner">
-                    {% if collaborator_entry.leader_names|length == 1 %}
-                        Project Leader: {{ collaborator_entry.leader_names[0] }}
-                    {% elif collaborator_entry.leader_names|length > 1 %}
-                        Project Leaders: {{ collaborator_entry.leader_names[0] }}, {{ collaborator_entry.leader_names[1] }}, ...
-                    {% endif %}
-                </div>  
-                {% if collaborator_entry.user_name %}
-                <div class="Project-collaborators">
-                    Project Collaborators: {{ collaborator_entry.user_name }}
-                </div>
-                {% endif %}
-                <div class="Description">
-                    {{ collaborator_entry.description }}
-                </div>
-                <div class="card-footer">
-                    <a href="{{ url_for('views_bp.details', id=collaborator_entry.id) }}"><button class="homebtn">Details</button></a>
-                    
-                </div>
-            </div>
-        {% else %}
-        <div class="collab-card hidden collab-card-hidden">
-            <div class="title-grid">
-                <div class="P-Title">{{ collaborator_entry.title }}</div>
-                <div class="status">Status: {{collaborator_entry.status}}</div>
-            </div>
-            <div class="P-owner">
-                {% if collaborator_entry.leader_names|length == 1 %}
-                    Project Leader: {{ collaborator_entry.leader_names[0] }}
-                {% elif collaborator_entry.leader_names|length > 1 %}
-                    Project Leaders: {{ collaborator_entry.leader_names[0] }}, {{ collaborator_entry.leader_names[1] }}, ...
-                {% endif %}
-            </div>  
-            {% if collaborator_entry.user_name %}
-            <div class="Project-collaborators">
-                Project Collaborators: {{ collaborator_entry.user_name }}
-            </div>
-            {% endif %}
-            <div class="Description">
-                {{ collaborator_entry.description }}
-            </div>
-            <div class="card-footer">
-                <a href="{{ url_for('views_bp.details', id=collaborator_entry.id) }}"><button class="homebtn">Details</button></a>
-                
-            </div>
-        
-        </div>
-        {% endif %}
-    {% endfor %}  
-    <div class="card-footer">
-        <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
-        <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
-    </div> 
-</div> -->
 
 
+  
 
 {% endblock %}
 
