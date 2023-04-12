@@ -1,98 +1,98 @@
-{% extends "base.html" %} {% block title %} My Account {% endblock %} 
-{% block main %}
-    <form action="/profile/edit_profile" method="post" class="mb-3 myform">
-        <h1>Welcome, {{ user.first_name }}! </h1>
-        <h2>User Information</h2>
-        <div class="mb-3 form-group">
-            <input
-                autofocus
-                class="form-control mx-auto w-auto"
-                id="first_name"
-                type="text"
-                minlength="1"
-                maxlength="255"
-                name="first_name"
-                value="{{ user.first_name }}"
-                disabled
-            />
-            <a href="#" onclick="editFirstName()">Edit</a>
-        </div>
-        <div class="mb-3 form-group">
-            <input
-                class="form-control mx-auto w-auto"
-                id="last_name"
-                type="text"
-                minlength="1"
-                maxlength="255"
-                name="last_name"
-                value="{{ user.last_name }}"
-                disabled
-            />
-            <a href="#" onclick="editLastName()">Edit</a>
-        </div>
-        <div class="mb-3 form-group">
-            <input
-                class="form-control mx-auto w-auto"
-                id="email"
-                type="email"
-                minlength="5"
-                maxlength="255"
-                name="email"
-                value="{{ user.email }}"
-                disabled
-            />
-            <a href="#" onclick="editEmail()">Edit</a>
-        </div>
-        <div class="mb-3 form-group">
-            <input
-                class="form-control mx-auto w-auto"
-                type="text"
-                minlength="5"
-                maxlength="255"
-                name="password"
-                value="********"
-                disabled
-            />
-        </div>
-        <button class="hidden" type="submit" id="saveButton">Save</button>
-        <div class="myform">
-            <div class="form-group mb-3"><a href="/profile/change_password">
-                <button class="btn">Change Password</button></a>
-            </div>
-        </div>
-    </form> 
-    
+{% extends "base.html" %} {% block title %} My Account {% endblock %} {% block
+main %}
+<form action="/profile/edit_profile" method="post" class="mb-3 myform">
+  <h1>Welcome, {{ user.first_name }}!</h1>
+  <h2>User Information</h2>
+  <div class="mb-3 form-group">
+    <input
+      autofocus
+      class="form-control mx-auto w-auto"
+      id="first_name"
+      type="text"
+      minlength="1"
+      maxlength="255"
+      name="first_name"
+      value="{{ user.first_name }}"
+      disabled
+    />
+    <a class="edit" href="#" onclick="editFirstName()">edit</a>
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      class="form-control mx-auto w-auto"
+      id="last_name"
+      type="text"
+      minlength="1"
+      maxlength="255"
+      name="last_name"
+      value="{{ user.last_name }}"
+      disabled
+    />
+    <a class="edit" href="#" onclick="editLastName()">edit</a>
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      class="form-control mx-auto w-auto"
+      id="email"
+      type="email"
+      minlength="5"
+      maxlength="255"
+      name="email"
+      value="{{ user.email }}"
+      disabled
+    />
+    <a class="edit" href="#" onclick="editEmail()">edit</a>
+  </div>
+  <div class="mb-3 form-group">
+    <input
+      class="form-control mx-auto w-auto"
+      type="text"
+      minlength="5"
+      maxlength="255"
+      name="password"
+      value="********"
+      disabled
+    />
+  </div>
+  <button class="hidden" type="submit" id="saveButton">Save</button>
+  <div class="myform">
+    <div class="form-group mb-3">
+      <a href="/profile/change_password">
+        <button class="btn">Change Password</button></a
+      >
+    </div>
+  </div>
+</form>
 
-    <script>
-        function editFirstName() {
-            // Enable all form fields
-            const first_name = document.getElementById('first_name');
-            first_name.disabled = false;
-            first_name.select();
-            // first_name.setSelectionRange(first_name.value.length, first_name.value.length);
-        }
-        function editLastName() {
-            // Enable all form fields
-            const last_name = document.getElementById('last_name');
-            last_name.disabled = false;
-            last_name.select();
-            last_name.setSelectionRange(last_name.value.length, last_name.value.length);
-        }
-        function editEmail() {
-            // Enable all form fields
-            const email = document.getElementById('email');
-            email.disabled = false;
-            email.select();
-        }
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('keyup', event => {
-                if (event.keyCode === 13) {
-                // Pressing Enter while editing a field submits the form
-                event.preventDefault();
-                document.getElementById('saveButton').click();
-                }
-            });
-        });
-        
-    </script>
+<script>
+  function editFirstName() {
+    // Enable all form fields
+    const first_name = document.getElementById("first_name");
+    first_name.disabled = false;
+    first_name.select();
+    // first_name.setSelectionRange(first_name.value.length, first_name.value.length);
+  }
+  function editLastName() {
+    // Enable all form fields
+    const last_name = document.getElementById("last_name");
+    last_name.disabled = false;
+    last_name.select();
+    last_name.setSelectionRange(last_name.value.length, last_name.value.length);
+  }
+  function editEmail() {
+    // Enable all form fields
+    const email = document.getElementById("email");
+    email.disabled = false;
+    email.select();
+  }
+  document.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("keyup", (event) => {
+      if (event.keyCode === 13) {
+        // Pressing Enter while editing a field submits the form
+        event.preventDefault();
+        document.getElementById("saveButton").click();
+      }
+    });
+  });
+</script>
 {% endblock %}
