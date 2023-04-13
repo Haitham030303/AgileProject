@@ -45,11 +45,11 @@ def register():
         # Check some complexity requirements
         if user:
             flash('A user with this email already exists!', category='error')
-        elif len(first_name) < 2:
+        elif len(first_name) < 2 or first_name.isspace():
             flash('First Name must be at least 2 characters!', category='error')
-        elif len(last_name) < 2:
+        elif len(last_name) < 2 or last_name.isspace():
             flash('Last Name must be at least 2 characters!', category='error')
-        elif len(email) < 5:
+        elif len(email) < 5 or email.isspace():
             flash('Email must be at least 5 characters!', category='error')
         elif len(password1) < 8:
             flash('Password length must be at least 8 characters!', category='error')

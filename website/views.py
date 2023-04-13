@@ -131,7 +131,7 @@ def add_collaborator(id):
             Already_a_leader = True
             break
     if Already_a_leader:
-        flash("You are already a Leader in this project", category="error")
+        flash("You are already a leader in this project", category="error")
         return redirect(url_for("views_bp.index"))
 
     new_project = Collaborator(project_id=id, user_id=current_user.id)
@@ -187,7 +187,7 @@ def add_project():
 
         if not emails_are_valid:
             flash(
-                "Project Leaders must have an account with the provided email.",
+                "Project Leaders must have an account with the provided email. Please enter valid emails.",
                 category="error",
             )
 
@@ -300,11 +300,11 @@ def edit_profile():
         # Check some complexity requirements
         if user and user != current_user:
             flash("A user with this email already exists!", category="error")
-        elif first_name and len(first_name) < 2:
+        elif first_name and (len(first_name) < 2 or first_name.isspace()):
             flash("First Name must be at least 2 characters!", category="error")
-        elif last_name and len(last_name) < 2:
+        elif last_name and (len(last_name) < 2 or last_name.isspace()):
             flash("Last Name must be at least 2 characters!", category="error")
-        elif email and len(email) < 5:
+        elif email and (len(email) < 5 or email.isspace()):
             flash("Email must be at least 5 characters!", category="error")
         else:
             current_user.first_name = first_name or current_user.first_name
