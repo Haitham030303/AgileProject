@@ -2,7 +2,7 @@
 *::after,
 *::before {
     box-sizing: border-box;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 }
 
 html {
@@ -604,7 +604,6 @@ nav li {
 
 
 /* Avatar dropdown */
-
 .gravatar {
     position: relative;
     top: -6px;
@@ -618,6 +617,10 @@ nav li {
 
 .nav .list {
     margin-bottom: 0.5rem;
+}
+
+.mb-16 {
+    margin-bottom: 1.5rem;
 }
 
 .dropdown {
