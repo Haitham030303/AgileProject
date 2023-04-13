@@ -2,6 +2,7 @@
 *::after,
 *::before {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html {
@@ -720,9 +721,14 @@ dashboard */
     font-family: sans-serif;
 }
 
-.status {
+.status-dashboard {
     display: block;
     text-align: left;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: green;
+    font-family: sans-serif;
 }
 
 
