@@ -2,6 +2,7 @@
 *::after,
 *::before {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html {
@@ -17,6 +18,10 @@ body,
 .card {
     font-family: serif;
     font-size: 1.6rem;
+}
+
+.display-flex {
+    display: flex;
 }
 
 body {
@@ -137,6 +142,7 @@ a {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-align: center;
+    font-family: sans-serif;
 }
 
 .status {
@@ -274,7 +280,7 @@ nav a {
     color: #ddd;
     text-decoration: none;
     margin: 0 10px;
-    transition: color .15s;
+    transition: color 0.15s;
 }
 
 nav a:hover {
@@ -285,7 +291,7 @@ nav a:hover {
     font-weight: bold;
     font-size: 24px;
     margin-left: 2rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 
 nav ul {
@@ -301,14 +307,12 @@ nav li {
     nav ul {
         display: none;
     }
-
     .menu-toggle {
         display: block;
         cursor: pointer;
         color: #fff;
         font-size: 24px;
     }
-
     .menu-toggle:hover+ul,
     nav ul:hover {
         display: flex;
@@ -320,11 +324,9 @@ nav li {
         width: 100%;
         padding: 10px 0;
     }
-
     .menu-toggle:hover+ul {
         margin-top: 0;
     }
-
     nav li {
         margin: 10px 0;
     }
@@ -509,26 +511,24 @@ nav li {
     display: block;
 }
 
-.hidden {
-    display: none;
-}
-
 .portfolio {
     font-size: 1.4rem;
     border-bottom: #0b9c19;
 }
 
+
 /* Modal Box (Are youu sure? pop up box)*/
+
 .modal-box {
     max-width: 380px;
     width: 100%;
-    border-radius: 24px;
     background-color: #fff;
     position: absolute;
     left: 50%;
     top: 50;
     transform: translate(-50%, -50%);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    box-shadow: 3px 5px 8px 3px rgba(0, 0, 0, 0.5);
     padding: 30px 20px;
     display: none;
     position: fixed;
@@ -536,7 +536,6 @@ nav li {
     z-index: 9999;
     /* make sure the modal box appears on top of other elements */
 }
-
 
 .modal-box img {
     width: 100px;
@@ -549,8 +548,8 @@ nav li {
 
 .modal-box h2 {
     margin-top: 20px;
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
     color: #333;
 }
 
@@ -562,10 +561,10 @@ nav li {
 }
 
 .modal-box button {
-    width: 100%;
+    width: 100px;
     margin-top: 50px;
     padding: 10px 0;
-    background: #6fd649;
+    background: #777;
     color: #fff;
     border: 0;
     outline: none;
@@ -573,11 +572,36 @@ nav li {
     border-radius: 4px;
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* Helps to the modal-buttons to fit properly */
+
+#join-cancel-btn {
+    order: 1;
+
+}
+
+#join-cancel-btn:hover {
+    background-color: red;
+    color: #fff;
+}
+
+#join-confirm-btn {
+    order: 2;
+}
+
+#join-confirm-btn:hover {
+    background-color: #0d991b;
+    color: #fff;
 }
 
 .modal-box button:hover {
     background-color: rgb(9, 58, 75);
 }
+
 
 /* Avatar dropdown */
 
@@ -593,7 +617,7 @@ nav li {
 }
 
 .nav .list {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 
 .dropdown {
@@ -608,7 +632,7 @@ nav li {
     right: 1rem;
     z-index: 1;
     width: 14rem;
-    padding-bottom: .8rem;
+    padding-bottom: 0.8rem;
 }
 
 .dropdown-content a {
@@ -619,9 +643,172 @@ nav li {
 }
 
 .dropdown-content a:hover {
-    color: white; 
+    color: white;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
+}
+
+
+/* 
+dashboard */
+
+.flex-column {
+    flex-direction: column;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.align-self-center {
+    align-self: left;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.full-height {
+    height: 100%;
+    margin-bottom: 7px;
+}
+
+.mr1 {
+    margin-right: 1rem;
+}
+
+.t-bold {
+    font-weight: bold;
+}
+
+.t-14 {
+    font-size: 14px;
+}
+
+.t-normal {
+    font-weight: normal;
+}
+
+.t-black--light {
+    color: #7f7f7f;
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden-collab {
+    display: none;
+}
+
+.project-history {
+    position: relative;
+    margin-top: 20px;
+    padding-left: 30px;
+}
+
+.project-history .title {
+    font-family: sans-serif;
+    font-size: 2.2rem;
+}
+
+.project-history .period {
+    font-size: 1.5rem;
+    color: #777;
+    font-family: sans-serif;
+}
+
+.status-dashboard {
+    display: block;
+    text-align: left;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: green;
+    font-family: sans-serif;
+}
+
+
+/* fancy line in dashboard  circle dot*/
+
+.project-history::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 10.6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #a9a9a9;
+    z-index: 1;
+}
+
+
+/* fancy line in dashboard  the lines*/
+
+.project-history::after {
+    content: "";
+    position: absolute;
+    top: 29px;
+    left: 14px;
+    bottom: -7px;
+    width: 2px;
+    background-color: #dedede;
+    z-index: 1;
+}
+
+
+/* ye gurmessa code*/
+
+.myform .edit {
+    position: relative;
+    bottom: 4.5rem;
+    left: 10rem;
+}
+
+
+/* the fancy link effects */
+
+.fancy-link {
+    position: relative;
+    display: inline-block;
+    color: #0077B5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.fancy-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #0077B5;
+    transition: all 0.3s ease;
+}
+
+.fancy-link:hover {
+    color: #0077B5;
+}
+
+.fancy-link:hover::after {
+    width: 100%;
 }

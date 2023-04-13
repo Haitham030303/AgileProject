@@ -1,67 +1,53 @@
 {% extends "base.html" %} {% block title %} Dashboard {% endblock %} {% block main%}
 
+<h1>Welcome, {{ user.first_name }}!</h1>
 
 <div class="card"> 
     <div class="title-grid portfolio">
-        <div class="P-Title">Project Portfolio</div>
-    </div>
+        <h2 class="P-Title">Project Portfolio</h2>
+    </div>   
     {% for entry in entries %}
         {% if loop.index <= 1 %}
-            <div class="project-card">
-                <div class="title-grid">
-                    <div class="P-Title">{{ entry.title }}</div>
-                    <div class="status">Status: {{entry.status}}</div>
+        <div class="project-card">
+            <div class="justify-space-between project-history">
+              <div class="full-width project-card">
+                <div class="full-height">
+                    <!-- link to details based on project/entry id -->
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link"> 
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
                 </div>
-                <div class="P-owner">
-                    {% if entry.leader_names|length == 1 %}
-                        Project Leader: {{ entry.leader_names[0] }}
-                    {% elif entry.leader_names|length > 1 %}
-                        Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
-                    {% endif %}
-                </div>  
-                {% if entry.user_name %}
-                <div class="Project-collaborators">
-                    Project Collaborators: {{ entry.user_name }}
-                </div>
-                {% endif %}
-                <div class="Description">
-                    {{ entry.description }}
-                </div>
-                <div class="card-footer">
-                    <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-                </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                </span>
+                <span>
+                    <br>
+                  <span class="status-dashboard">Status: {{entry.status}}</span>
+                </span>
+              </div>
             </div>
-        {% else %}
-        
-        <div class="project-card hidden project-card-hidden">
-            <div class="title-grid">
-                <div class="P-Title">{{ entry.title }}</div>
-                <div class="status">Status: {{entry.status}}</div>
-            </div>
-            <div class="P-owner">
-                {% if entry.leader_names|length == 1 %}
-                    Project Leader: {{ entry.leader_names[0] }}
-                {% elif entry.leader_names|length > 1 %}
-                    Project Leaders: {{ entry.leader_names[0] }}, {{ entry.leader_names[1] }}, ...
-                {% endif %}
-            </div>  
-            {% if entry.user_name %}
-            <div class="Project-collaborators">
-                Project Collaborators: {{ entry.user_name }}
-            </div>
-            {% endif %}
-            <div class="Description">
-                {{ entry.description }}
-            </div>
-            <div class="card-footer">
-                <a href="{{ url_for('views_bp.details', id=entry.id) }}"><button class="homebtn">Details</button></a>
-    
-            </div>
-        <div class="card-footer">
-            <button class="homebtn btn-outline show-less-btn">Show less</button>
-        </div> 
         </div>
-        {% endif %}
+          
+        {% else %}
+        <div class="project-card hidden project-card-hidden">
+            <div class="justify-space-between project-history">
+              <div class="full-width project-card">
+                <div class="full-height">
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link">
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
+                </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                </span>
+                <span>
+                    <br>
+                  <span class="status-dashboard">Status: {{entry.status}}</span>
+                </span>
+              </div>
+            </div>
+        </div>
+        {% endif %} 
     {% endfor %}   
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn">Show less</button>
@@ -69,66 +55,53 @@
     </div> 
 </div>
 
-<div class="card">
-    <div class="title-grid">
-        <div class="P-Title">Collaborative efforts</div>
-    </div>
-    {% for collaborator_entry in collaborator_entries %}
+<div class="card"> 
+    <div class="title-grid portfolio">
+        <h2 class="P-Title">Collaborative Efforts</h2>
+    </div>   
+    {% for entry in collaborator_entries %}
         {% if loop.index <= 1 %}
-            <div class="collab-card">
-                <div class="title-grid">
-                    <div class="P-Title">{{ collaborator_entry.title }}</div>
-                    <div class="status">Status: {{collaborator_entry.status}}</div>
+        <div class="collab-card">
+            <div class="justify-space-between project-history">
+              <div class="full-width collab-card">
+                <div class="full-height">
+                    <!-- link to details based on project/entry id -->
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link"> 
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
                 </div>
-                <div class="P-owner">
-                    {% if collaborator_entry.leader_names|length == 1 %}
-                        Project Leader: {{ collaborator_entry.leader_names[0] }}
-                    {% elif collaborator_entry.leader_names|length > 1 %}
-                        Project Leaders: {{ collaborator_entry.leader_names[0] }}, {{ collaborator_entry.leader_names[1] }}, ...
-                    {% endif %}
-                </div>  
-                {% if collaborator_entry.user_name %}
-                <div class="Project-collaborators">
-                    Project Collaborators: {{ collaborator_entry.user_name }}
-                </div>
-                {% endif %}
-                <div class="Description">
-                    {{ collaborator_entry.description }}
-                </div>
-                <div class="card-footer">
-                    <a href="{{ url_for('views_bp.details', id=collaborator_entry.id) }}"><button class="homebtn">Details</button></a>
-                    
-                </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                </span>
+                <span>
+                     <br>
+                  <span class="status-dashboard">Status: {{entry.status}}</span>
+                </span>
+              </div>
             </div>
-        {% else %}
-        <div class="collab-card hidden collab-card-hidden">
-            <div class="title-grid">
-                <div class="P-Title">{{ collaborator_entry.title }}</div>
-                <div class="status">Status: {{collaborator_entry.status}}</div>
-            </div>
-            <div class="P-owner">
-                {% if collaborator_entry.leader_names|length == 1 %}
-                    Project Leader: {{ collaborator_entry.leader_names[0] }}
-                {% elif collaborator_entry.leader_names|length > 1 %}
-                    Project Leaders: {{ collaborator_entry.leader_names[0] }}, {{ collaborator_entry.leader_names[1] }}, ...
-                {% endif %}
-            </div>  
-            {% if collaborator_entry.user_name %}
-            <div class="Project-collaborators">
-                Project Collaborators: {{ collaborator_entry.user_name }}
-            </div>
-            {% endif %}
-            <div class="Description">
-                {{ collaborator_entry.description }}
-            </div>
-            <div class="card-footer">
-                <a href="{{ url_for('views_bp.details', id=collaborator_entry.id) }}"><button class="homebtn">Details</button></a>
-                
-            </div>
-        
         </div>
-        {% endif %}
-    {% endfor %}  
+          
+        {% else %}
+        <div class="collab-card hidden-collab collab-card-hidden">
+            <div class="justify-space-between project-history">
+              <div class="full-width collab-card">
+                <div class="full-height">
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link">
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
+                </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                </span>
+                <span>
+                    <br>
+                  <span class="status-dashboard">Status: {{entry.status}}</span>
+                </span>
+              </div>
+            </div>
+        </div>
+        {% endif %} 
+    {% endfor %}   
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
         <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
@@ -136,9 +109,7 @@
 </div>
 
 
-
-
-
+  
 
 {% endblock %}
 
