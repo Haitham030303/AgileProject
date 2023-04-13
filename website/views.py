@@ -228,7 +228,7 @@ def dashboard():
                 collaborator_entry["start_date"] = project.start_date
                 collaborator_entries.append(collaborator_entry)
 
-    flash(f"Welcome {user.first_name}!")
+    
     return render_template(
         "dashboard.html",
         user=current_user,

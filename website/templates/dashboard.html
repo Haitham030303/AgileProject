@@ -1,9 +1,10 @@
 {% extends "base.html" %} {% block title %} Dashboard {% endblock %} {% block main%}
 
+<h1>Welcome, {{ user.first_name }}!</h1>
 
 <div class="card"> 
     <div class="title-grid portfolio">
-        <div class="P-Title">Project Portfolio</div>
+        <h2 class="P-Title">Project Portfolio</h2>
     </div>   
     {% for entry in entries %}
         {% if loop.index <= 1 %}
@@ -17,9 +18,9 @@
                     </a>
                 </div>
                 <span class="period">
-                  <span>{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
                 </span>
-                <span class="period">
+                <span class="status">
                   <span>Status: {{entry.status}}</span>
                 </span>
               </div>
@@ -36,9 +37,9 @@
                     </a>
                 </div>
                 <span class="period">
-                  <span>{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
                 </span>
-                <span class="period">
+                <span class="status">
                   <span>Status: {{entry.status}}</span>
                 </span>
               </div>
@@ -49,6 +50,57 @@
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn">Show less</button>
         <button class="homebtn btn-outline show-more-btn">Show more</button>
+    </div> 
+</div>
+
+<div class="card"> 
+    <div class="title-grid portfolio">
+        <h2 class="P-Title">Collaborative Efforts</h2>
+    </div>   
+    {% for entry in collaborator_entries %}
+        {% if loop.index <= 1 %}
+        <div class="collab-card">
+            <div class="justify-space-between project-history">
+              <div class="full-width collab-card">
+                <div class="full-height">
+                    <!-- link to details based on project/entry id -->
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link"> 
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
+                </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                </span>
+                <span class="status">
+                  <span>Status: {{entry.status}}</span>
+                </span>
+              </div>
+            </div>
+        </div>
+          
+        {% else %}
+        <div class="collab-card hidden-collab collab-card-hidden">
+            <div class="justify-space-between project-history">
+              <div class="full-width collab-card">
+                <div class="full-height">
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link">
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
+                </div>
+                <span class="period">
+                  <span>{{entry.start_date.month}}-{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
+                </span>
+                <span class="status">
+                  <span>Status: {{entry.status}}</span>
+                </span>
+              </div>
+            </div>
+        </div>
+        {% endif %} 
+    {% endfor %}   
+    <div class="card-footer">
+        <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
+        <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
     </div> 
 </div>
 
