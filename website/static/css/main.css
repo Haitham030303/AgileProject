@@ -708,6 +708,7 @@ dashboard */
   font-family: sans-serif;
 }
 
+/* fancy line in dashboard  */
 .project-history::before {
   content: "";
   position: absolute;
@@ -720,6 +721,7 @@ dashboard */
   z-index: 1;
 }
 
+/* fancy line in dashboard  */
 .project-history::after {
   content: "";
   position: absolute;
