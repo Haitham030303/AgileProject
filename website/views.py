@@ -153,6 +153,8 @@ def add_project():
         project_leader_ids = []
         emails_are_valid = True
         emails = set()
+        if len(project_leader_emails) == 0:
+            flash("Please enter emails for project leaders.", category='error')
         for email in project_leader_emails:
             leader = User.query.filter_by(email=email).first()
             if not leader:
@@ -166,11 +168,11 @@ def add_project():
                     flash("Please enter each email only once.", category="error")
                     break
         else:
-            if len(project_description) < 1:
-                flash("project too small", category="error")
+            if len(project_description) < 1 or project_description.isspace():
+                flash("Project description is required", category="error")
             elif len(project_description) > 5000:
-                flash("project too large", category="error")
-            elif len(title) < 2:
+                flash("Project description is too large. Please limit to 5000 chars.", category="error")
+            elif len(title) < 2 or title.isspace():
                 flash("Title must be at least 2 characters", category="error")
             else:
                 # add the project to database
