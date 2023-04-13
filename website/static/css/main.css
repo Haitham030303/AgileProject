@@ -522,13 +522,13 @@ nav li {
 .modal-box {
     max-width: 380px;
     width: 100%;
-    border-radius: 24px;
     background-color: #fff;
     position: absolute;
     left: 50%;
     top: 50;
     transform: translate(-50%, -50%);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    box-shadow: 3px 5px 8px 3px rgba(0, 0, 0, 0.5);
     padding: 30px 20px;
     display: none;
     position: fixed;
@@ -548,8 +548,8 @@ nav li {
 
 .modal-box h2 {
     margin-top: 20px;
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
     color: #333;
 }
 
@@ -564,7 +564,7 @@ nav li {
     width: 100px;
     margin-top: 50px;
     padding: 10px 0;
-    background: #6fd649;
+    background: #777;
     color: #fff;
     border: 0;
     outline: none;
@@ -581,10 +581,21 @@ nav li {
 
 #join-cancel-btn {
     order: 1;
+
+}
+
+#join-cancel-btn:hover {
+    background-color: red;
+    color: #fff;
 }
 
 #join-confirm-btn {
     order: 2;
+}
+
+#join-confirm-btn:hover {
+    background-color: #0d991b;
+    color: #fff;
 }
 
 .modal-box button:hover {
