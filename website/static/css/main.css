@@ -776,11 +776,20 @@ dashboard */
 
 
 /* ye gurmessa code*/
-
-.myform .edit {
+.myform .form-group {
     position: relative;
-    bottom: 4.5rem;
-    left: 10rem;
+}
+.myform .edit {
+    position: absolute;
+    bottom: 2.6rem;
+    right: 2.4rem;
+    text-decoration: none;
+    color: #0e52b7;
+    font-weight: 500;
+}
+
+.myform .edit:hover {
+    color: #2f2f2f;
 }
 
 
