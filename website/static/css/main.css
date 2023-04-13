@@ -141,6 +141,7 @@ a {
   font-size: 3rem;
   margin-bottom: 1rem;
   text-align: center;
+  font-family: sans-serif;
 }
 
 .status {
@@ -665,6 +666,7 @@ dashboard */
 
 .full-height {
   height: 100%;
+  margin-bottom: 7px;
 }
 
 .mr1 {
@@ -708,33 +710,67 @@ dashboard */
   font-family: sans-serif;
 }
 
-/* fancy line in dashboard  */
+/* fancy line in dashboard  circle dot*/
 .project-history::before {
   content: "";
   position: absolute;
   top: 7px;
-  left: 10px;
-  width: 10px;
-  height: 10px;
+  left: 10.6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: #a9a9a9;
   z-index: 1;
 }
 
-/* fancy line in dashboard  */
+/* fancy line in dashboard  the lines*/
 .project-history::after {
   content: "";
   position: absolute;
-  top: 22px;
+  top: 29px;
   left: 14px;
-  bottom: -22px;
+  bottom: -10px;
   width: 2px;
   background-color: #dedede;
   z-index: 1;
 }
 
+/* ye gurmessa code*/
 .myform .edit {
   position: relative;
   bottom: 4.5rem;
   left: 10rem;
 }
+
+
+/* the fancy link effects */
+.fancy-link {
+    position: relative;
+    display: inline-block;
+    color: #0077B5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .fancy-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #0077B5;
+    transition: all 0.3s ease;
+  }
+  
+  .fancy-link:hover {
+    color: #0077B5;
+  }
+  
+  .fancy-link:hover::after {
+    width: 100%;
+  }
+  

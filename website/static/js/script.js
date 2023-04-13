@@ -19,6 +19,7 @@ window.onload = () => {
         });
       });
       
+      
       //   show more / show less options
       const showMoreBtn = document.querySelector('.show-more-btn');
       const showLessBtn = document.querySelector('.show-less-btn');
@@ -31,20 +32,20 @@ window.onload = () => {
               card.classList.remove('hidden');
           });
           showMoreBtn.style.display = 'none';
-          showLessBtn.style.display = 'block';
+          //showLessBtn.style.display = 'block'; // uncomment to use 
       });
 
 
-      // show less
-      showLessBtn.addEventListener('click', () => {
-        projectCards.forEach((card, index) => {
-            if (index > originalNumVisibleCards) {
-                card.classList.add('hidden');
-            }
-        });
-        showMoreBtn.style.display = 'block';
-        showLessBtn.style.display = 'none';
-    });
+      // show less // if needed 
+    //   showLessBtn.addEventListener('click', () => {
+    //     projectCards.forEach((card, index) => {
+    //         if (index > originalNumVisibleCards) {
+    //             card.classList.add('hidden');
+    //         }
+    //     });
+    //     showMoreBtn.style.display = 'block';
+    //     showLessBtn.style.display = 'none';
+    // });
 
 
 
@@ -75,8 +76,7 @@ window.onload = () => {
         addBtn.parentNode.insertBefore(inputContainer, addBtn);
       });
       
-      
-
+    
 
   };
 

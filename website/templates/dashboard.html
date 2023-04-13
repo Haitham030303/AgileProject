@@ -11,10 +11,13 @@
             <div class="justify-space-between project-history">
               <div class="full-width project-card">
                 <div class="full-height">
-                  <span class="title">{{ entry.title }}</span>
+                    <!-- link to details based on project/entry id -->
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link"> 
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
                 </div>
                 <span class="period">
-                  <span>{{entry.start_date.day}}/{{entry.start_date.year}} - Present</span>
+                  <span>{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
                 </span>
                 <span class="period">
                   <span>Status: {{entry.status}}</span>
@@ -28,10 +31,12 @@
             <div class="justify-space-between project-history">
               <div class="full-width project-card">
                 <div class="full-height">
-                  <span class="title">{{ entry.title }}</span>
+                    <a href="{{ url_for('views_bp.details', id=entry.id) }}" class="fancy-link">
+                        <span class="title">{{ entry.title }}</span>
+                    </a>
                 </div>
                 <span class="period">
-                  <span>{{entry.start_date.day}}/{{entry.start_date.year}} - Present</span>
+                  <span>{{entry.start_date.day}}-{{entry.start_date.year}} - Present</span>
                 </span>
                 <span class="period">
                   <span>Status: {{entry.status}}</span>
