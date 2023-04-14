@@ -415,12 +415,12 @@ nav li {
 }
 
 .main {
-    padding-bottom: 50px;
+    padding-bottom: 5rem;
     /* height of the footer */
 }
 
 .footer {
-    height: 50px;
+    height: 5rem;
     /* height of the footer */
 }
 
@@ -885,4 +885,3 @@ dashboard */
     text-align: center;
     margin-bottom: 1.5rem;
 }
-

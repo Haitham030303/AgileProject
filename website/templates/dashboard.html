@@ -7,7 +7,7 @@
         <h3 class="project-title">Project Portfolio</h3>
     </div>   
     {% for entry in entries %}
-        {% if loop.index < 4  %}
+        {% if loop.index < 6  %}
         <div class="project-card">
             <div class="justify-space-between project-history">
               <div class="full-width project-card">
@@ -49,7 +49,7 @@
         </div>
         {% endif %} 
     {% endfor %}   
-    {% if entries|length > 3 %}
+    {% if entries|length > 5 %}
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
         <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
@@ -62,7 +62,7 @@
         <h5 class="collab-title">Collaborative Efforts</h5>
     </div>   
     {% for entry in collaborator_entries %}
-        {% if loop.index < 4 %}
+        {% if loop.index < 6 %}
         <div class="collab-card">
             <div class="justify-space-between project-history">
               <div class="full-width collab-card">
@@ -104,7 +104,7 @@
         </div>
         {% endif %} 
     {% endfor %} 
-        {% if collaborator_entries|length > 3 %}
+        {% if collaborator_entries|length > 5  %}
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn-collab">Show less</button>
         <button class="homebtn btn-outline show-more-btn-collab">Show more</button>
