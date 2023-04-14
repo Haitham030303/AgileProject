@@ -30,7 +30,10 @@
 
   <body>
     <nav class="nav">
-      <a class="logo" href="/">Project Hive</a>
+      <a class="logo" href="/">
+      <img src="../static/pictures/favicon-32x32.png" alt="Logo">  
+      <span class="logo__text">Project Hive</span>
+      </a>
       <ul class="list">
         {% if user.is_authenticated %}
         <li><a href="/add_project">Add Project</a></li>
@@ -74,7 +77,7 @@
     {% endblock %}
     <main>{% block main %} {% endblock %}</main>
     <footer class="mb-5 small text-center text-muted">
-  <div class="footer-main">
+  <div class="footer-main copyright">
     <p>&copy; 2023 Project Hive. All rights reserved.</p>
   </div>
   </footer>
