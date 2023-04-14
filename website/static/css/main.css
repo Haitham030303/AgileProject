@@ -220,14 +220,17 @@ a {
     background: none;
     border: 1px solid var(--color-primary);
     color: var(--color-primary);
-    transition: background .15s ease-out;
+    transition: background-color .15s ease-out;
 }
 
 .homebtn.btn-outline:hover,
 .homebtn.btn-outline:focus {
     /* background: hsl(199, 84%, 54%); */
-    background: var(--color-primary-darker);
+    color: var(--color-primary-darker);
+    border: 1px solid var(--color-primary-darker);
+    background-color: hsl(216, 98%, 75%);
     color: white;
+    border: none;
 }
 
 .homebtn+.homebtn {
@@ -619,18 +622,18 @@ nav li {
     width: 100px;
     margin-top: 50px;
     padding: 10px 0;
-    background: #777;
-    color: #fff;
+    background: #ccc;
+    color: black;
     border: 0;
     outline: none;
-    font-size: 18px;
+    font-size: 1.6rem;
     border-radius: 4px;
     cursor: pointer;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     justify-content: space-between;
     align-items: center;
+    transition: background-color .3s ease-out;
 }
-
 
 /* Helps to the modal-buttons to fit properly */
 
@@ -639,8 +642,9 @@ nav li {
 }
 
 #join-cancel-btn:hover {
-    background-color: red;
-    color: #fff;
+    background-color: #eee;
+    color: var(--color-primary-darker);
+    border: 1px solid var(--color-primary-darker);
 }
 
 #join-confirm-btn {
@@ -648,7 +652,7 @@ nav li {
 }
 
 #join-confirm-btn:hover {
-    background-color: #0d991b;
+    background-color: var(--color-primary-darker);
     color: #fff;
 }
 
@@ -853,7 +857,7 @@ dashboard */
 }
 
 .myform .edit:hover {
-    color: #2f2f2f;
+    color: #222;
 }
 
 
