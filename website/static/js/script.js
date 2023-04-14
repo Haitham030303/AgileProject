@@ -52,22 +52,27 @@ window.onload = () => {
     const CollaboriginalNumVisibleCards = 1;
 
     // show more 
-    showMoreBtnCollab.addEventListener('click', () => {
-        collabCards.forEach(card => {
-            card.classList.remove('hidden-collab');
+    if (showMoreBtnCollab) {
+        showMoreBtnCollab.addEventListener('click', () => {
+            collabCards.forEach(card => {
+                card.classList.remove('hidden-collab');
+            });
+            showMoreBtnCollab.style.display = 'none';
+            showLessBtnCollab.style.display = 'block'; // uncomment to use 
         });
-        showMoreBtnCollab.style.display = 'none';
-        showLessBtnCollab.style.display = 'block'; // uncomment to use 
-    });
+
+    }
 
     // show less
-    showLessBtnCollab.addEventListener('click', () => {
-        collabCards.forEach(card => {
-            card.classList.add('hidden-collab');
+    if (showLessBtnCollab) {
+        showLessBtnCollab.addEventListener('click', () => {
+            collabCards.forEach(card => {
+                card.classList.add('hidden-collab');
+            });
+            showMoreBtnCollab.style.display = 'block';
+            showLessBtnCollab.style.display = 'none';
         });
-        showMoreBtnCollab.style.display = 'block';
-        showLessBtnCollab.style.display = 'none';
-    });
+    }
 
     // show less // if needed 
     //   showLessBtn.addEventListener('click', () => {
@@ -92,7 +97,7 @@ window.onload = () => {
             const input = document.createElement('input');
             input.setAttribute('autocomplete', 'off');
             input.setAttribute('class', 'form-control');
-            input.setAttribute('type', 'text');
+            input.setAttribute('type', 'email');
             input.setAttribute('minlength', '5');
             input.setAttribute('maxlength', '255');
             input.setAttribute('name', 'project_leader[]');
