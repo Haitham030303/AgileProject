@@ -33,7 +33,7 @@ body,
 }
 
 .card {
-    font-family: serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 1.6rem;
 }
 
@@ -136,16 +136,24 @@ a {
 
 /*  */
 
+.home-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.P-owner, .Project-collaborators {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+}
 .P-owner {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     margin-left: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 .Project-collaborators {
     margin-bottom: 1rem;
     margin-left: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 .card {
@@ -159,13 +167,15 @@ a {
 
 .P-Title {
     font-size: 3rem;
+    text-decoration: underline;
     margin-bottom: 1rem;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'DM Serif Display', serif;
 }
 
 .status {
     font-size: 1.8rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-bottom: 0.5rem;
     text-align: end;
     color: green;
