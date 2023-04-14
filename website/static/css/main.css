@@ -230,7 +230,7 @@ a {
     border: 1px solid var(--color-primary-darker);
     background-color: hsl(216, 98%, 75%);
     color: white;
-    border: none;
+    border-color: hsl(216, 98%, 75%);
 }
 
 .homebtn+.homebtn {
@@ -905,4 +905,17 @@ dashboard */
     font-size: 3.0rem;
     text-align: center;
     margin-bottom: 1.5rem;
+}
+
+.dashboard .btn-outline {
+    position: relative;
+    top: 1rem;
+    left: 1rem;
+    margin-bottom: 1.5rem;
+    transition: background-color .2s ease-in-out;
+}
+
+.dashboard .btn-outline:hover {
+    background-color: var(--color-primary-darker);
+    border: 1px solid var(--color-primary-darker);
 }
