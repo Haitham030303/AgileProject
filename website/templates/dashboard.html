@@ -22,12 +22,11 @@
                 </span>
                 <span>
                     <br>
-                  <span class="status-dashboard">Status: {{entry.status}}</span>
+                    <span class="status-dashboard">Status: {{entry.status}}</span>
                 </span>
               </div>
             </div>
         </div>
-          
         {% else %}
         <div class="project-card hidden project-card-hidden">
             <div class="justify-space-between project-history">
@@ -51,8 +50,8 @@
     {% endfor %}   
     {% if entries|length > 3 %}
     <div class="card-footer">
-        <button class="homebtn hidden btn-outline show-less-btn-collab">Show Less</button>
-        <button class="homebtn btn-outline show-more-btn-collab">Show More</button>
+        <button class="homebtn hidden btn-outline show-less-btn">Show Less</button>
+        <button class="homebtn btn-outline show-more-btn">Show More</button>
     </div> 
     {%endif%}
 </div>
@@ -104,7 +103,7 @@
         </div>
         {% endif %} 
     {% endfor %} 
-        {% if collaborator_entries|length > 3  %}
+    {% if collaborator_entries|length > 3  %}
     <div class="card-footer">
         <button class="homebtn hidden btn-outline show-less-btn-collab">Show Less</button>
         <button class="homebtn btn-outline show-more-btn-collab">Show More</button>
