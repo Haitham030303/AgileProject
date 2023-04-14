@@ -26,22 +26,25 @@ window.onload = () => {
     const projectCards = document.querySelectorAll('.project-card-hidden');
     const originalNumVisibleCards = 1;
 
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            projectCards.forEach(card => {
+                card.classList.remove('hidden');
+            });
+            showMoreBtn.style.display = 'none';
+            showLessBtn.style.display = 'block'; // uncomment to use 
+        });
+        // show less
+        showLessBtn.addEventListener('click', () => {
+            projectCards.forEach(card => {
+                card.classList.add('hidden');
+            });
+            showMoreBtn.style.display = 'block';
+            showLessBtn.style.display = 'none';
+        });
+    }
     // show more 
-    showMoreBtn.addEventListener('click', () => {
-        projectCards.forEach(card => {
-            card.classList.remove('hidden');
-        });
-        showMoreBtn.style.display = 'none';
-        showLessBtn.style.display = 'block'; // uncomment to use 
-    });
-    // show less
-    showLessBtn.addEventListener('click', () => {
-        projectCards.forEach(card => {
-            card.classList.add('hidden');
-        });
-        showMoreBtn.style.display = 'block';
-        showLessBtn.style.display = 'none';
-    });
+
     //   show more / show less options collab
     const showMoreBtnCollab = document.querySelector('.show-more-btn-collab');
     const showLessBtnCollab = document.querySelector('.show-less-btn-collab');
